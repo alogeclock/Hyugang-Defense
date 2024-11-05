@@ -1,0 +1,233 @@
+fileFormatVersion: 2
+guid: 7a99c690466e1f143b952c466bf8bd49
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 15
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UI Grass
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 49
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c329cfa365f05104a99f6616fe93948b
+      internalID: 1851848583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Grass_0: 1391150770
+      Grass_1: -1239014613
+      Grass_10: 621237750
+      Grass_11: 592974716
+      Grass_12: 216517589
+      Grass_13: -1624804033
+      Grass_14: -840052173
+      Grass_15: 366070920
+      Grass_16: -2058945774
+      Grass_17: 976030444
+      Grass_18: 1201358366
+      Grass_19: -1552194024
+      Grass_2: 1301101638
+      Grass_20: 623405846
+      Grass_21: -1942572244
+      Grass_22: -1040635149
+      Grass_23: 1891535470
+      Grass_24: -1289685145
+      Grass_25: 248272934
+      Grass_26: 1254388728
+      Grass_27: 1928530236
+      Grass_28: 490122522
+      Grass_29: -2067452354
+      Grass_3: -541392721
+      Grass_30: 698676447
+      Grass_31: 856624624
+      Grass_32: -246846735
+      Grass_33: 5548792
+      Grass_34: 1566109714
+      Grass_35: -1113788158
+      Grass_36: -191539317
+      Grass_37: -1364645429
+      Grass_38: -904954320
+      Grass_39: -1475590363
+      Grass_4: 2084136279
+      Grass_40: 1930768142
+      Grass_41: -769364318
+      Grass_42: -1464230776
+      Grass_43: 1020453415
+      Grass_44: -1808863284
+      Grass_45: 534767411
+      Grass_46: -216325200
+      Grass_47: -726602967
+      Grass_48: -651557248
+      Grass_49: -1704627403
+      Grass_5: 213283300
+      Grass_50: -1893941978
+      Grass_51: -1925714524
+      Grass_52: -1204017912
+      Grass_53: 907582536
+      Grass_54: -564185864
+      Grass_55: 1562757346
+      Grass_56: 685866563
+      Grass_57: -833817168
+      Grass_58: 77462548
+      Grass_59: -1038966581
+      Grass_6: -1800278968
+      Grass_60: -1887862133
+      Grass_61: -515258793
+      Grass_62: -1308869338
+      Grass_63: -295538554
+      Grass_64: 1095953973
+      Grass_65: 304777932
+      Grass_66: -1622555210
+      Grass_67: 480053698
+      Grass_68: -1909922103
+      Grass_69: 1119343549
+      Grass_7: 427224667
+      Grass_70: 256846284
+      Grass_8: 1908553865
+      Grass_9: -692826897
+      UI Grass: 1851848583
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
