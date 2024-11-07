@@ -13,20 +13,24 @@ public class GameManager : MonoBehaviour
     public float playTime;
     public Text playTimeUI;
     public Text goldUI;
-    
-    public float goldTimer;
+
+    void Awake() {
+        g = this;
+    }
 
     void Update() {
         playTime += Time.deltaTime;
         playTimeUI.text = SetTime((int)playTime);
 
-        // gold 관련 UI debug 코드
         goldUI.text = gold.ToString();
+
+        /* gold 관련 UI debug 코드
         goldTimer += Time.deltaTime;
         if (goldTimer > 1.0f) {
             goldTimer = 0.0f;
             gold += 10;
         }
+        */
     }
 
     string SetTime(int time) {

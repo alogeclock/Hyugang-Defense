@@ -7,11 +7,13 @@ public class Unit : MonoBehaviour
     public float health;
     public int maxHealth;    
 
-    public float damage;
-    public float attackCooldown;
-    float attackTimer;
+    public float earn;
+    public float meleeDamage;
+    public float Cooldown;
+    float Timer;
 
     public bool isRanged; // 원거리 공격
+    public bool isFarm;
 
     public GameObject bulletPrefab;
     Rigidbody2D rigid;
@@ -19,7 +21,7 @@ public class Unit : MonoBehaviour
 
     void Awake() {
         health = maxHealth;
-        attackTimer = attackCooldown;
+        Timer = Cooldown;
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
@@ -27,10 +29,12 @@ public class Unit : MonoBehaviour
     void FixedUpdate()
     {
         // 공격
-        attackTimer = Mathf.Clamp(attackTimer - Time.deltaTime, 0, attackCooldown);
-        if (isRanged && attackTimer <= 0) {
-            RangeAttack();
-            attackTimer = attackCooldown;
+        Timer = Mathf.Clamp(Timer - Time.deltaTime, 0, Cooldown);
+
+        if (Timer <= 0) {
+            if (isRanged) RangeAttack();
+            if (isFarm) Farm();
+            Timer = Cooldown;
         }
 
         // 사망
@@ -41,10 +45,10 @@ public class Unit : MonoBehaviour
     {
         Enemy enemy = other.collider.GetComponent<Enemy>(); // 적과 충돌
 
-        if (attackTimer <= 0 && enemy != null) {
+        if (Timer <= 0 && enemy != null) {
             if (isRanged) return; // 원거리 공격 유닛이라면 충돌 데미지 0
-            enemy.ChangeHealth(-damage);
-            attackTimer = attackCooldown;
+            enemy.ChangeHealth(-meleeDamage);
+            Timer = Cooldown;
         }
     }
 
@@ -60,5 +64,9 @@ public class Unit : MonoBehaviour
         Bullet bullet = bulletObject.GetComponent<Bullet>();
         bullet.Launch(Vector2.right, 200);
         // anim.SetTrigger("Launch");
+    }
+
+    public void Farm() {
+        GameManager.g.gold += (int)earn;
     }
 }

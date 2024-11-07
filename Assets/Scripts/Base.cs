@@ -4,10 +4,23 @@ using UnityEngine;
 
 public class Base : MonoBehaviour
 {
-    public int health;
-    public int maxHealth;
+    public float health;
+    public float maxHealth;
+    public bool isFence;
 
     void Awake() {
         health = maxHealth;
+    }
+
+    void FixedUpdate() {
+        if (health <= 0) {
+            Destroy(gameObject);
+            // if (!isFence) GameOver() 출력 함수
+        }
+    }
+
+    public void ChangeHealth(float amount)
+    {
+        health = Mathf.Clamp(health + amount, 0, maxHealth);
     }
 }

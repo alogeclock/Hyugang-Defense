@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -30,12 +31,14 @@ public class Enemy : MonoBehaviour
     void OnCollisionStay2D(Collision2D other)
     {
         Unit unit = other.collider.GetComponent<Unit>(); // 적과 충돌
+        Base home = other.collider.GetComponent<Base>(); // 기지과 충돌
 
-        if (attackTimer <= 0 && unit != null)
+        if (attackTimer <= 0)
         {
-            unit.ChangeHealth(-damage);
+            if (unit != null) unit.ChangeHealth(-damage);
+            else if (home != null) home.ChangeHealth(-damage);
+
             attackTimer = attackCooldown;
-            Debug.Log(this.gameObject.name + " is Attacked " + unit.gameObject.name);
         }
     }
 
