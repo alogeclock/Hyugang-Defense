@@ -15,7 +15,7 @@ public class Base : MonoBehaviour
     void FixedUpdate() {
         if (health <= 0) {
             Destroy(gameObject);
-            // if (!isFence) GameOver() 출력 함수
+            // if (!isFence) GameOver() output function
         }
     }
 

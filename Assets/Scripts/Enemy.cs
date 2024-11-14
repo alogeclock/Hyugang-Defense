@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    Rigidbody2D rigid;
+    public RuntimeAnimatorController[] animCon; 
 
     public float health;
     public int maxHealth;
@@ -16,22 +16,36 @@ public class Enemy : MonoBehaviour
     public float attackCooldown;
     float attackTimer;
 
+    bool isLive;
+
+    Animator anim;
+    SpriteRenderer spriter;
+    BoxCollider2D coll;
+    Rigidbody2D rigid; // enemy's current position
+
     void Awake() 
     {
         rigid = GetComponent<Rigidbody2D>();
-        health = maxHealth;
+        spriter = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+        coll = GetComponent<BoxCollider2D>();
+        // anim.SetBool("Dead", false);
     }
 
     void OnEnable()
     {
         attackTimer = Mathf.Clamp(attackTimer - Time.deltaTime, 0, attackCooldown);
-        if (health <= 0) Destroy(gameObject);
+        isLive = true;
+        health = maxHealth;
+        coll.enabled = true;
+        rigid.simulated = true;
     }
 
     void OnCollisionStay2D(Collision2D other)
     {
-        Unit unit = other.collider.GetComponent<Unit>(); // 적과 충돌
-        Base home = other.collider.GetComponent<Base>(); // 기지과 충돌
+        if (!isLive) return;
+        Unit unit = other.collider.GetComponent<Unit>(); // collide with enemy
+        Base home = other.collider.GetComponent<Base>(); // collide with base
 
         if (attackTimer <= 0)
         {
@@ -42,19 +56,37 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // Vector2: 2차원 벡터
+    // Vector2: 2-dimensional vector
     void FixedUpdate()
     {
-        // 이동
+        if (!isLive) return;
+        // move
         Vector2 nextVec = Vector2.left.normalized * speed * Time.fixedDeltaTime;
         rigid.MovePosition(rigid.position + nextVec);
         rigid.velocity = Vector2.zero;
 
-        // 공격
+        // attack
         attackTimer = Mathf.Clamp(attackTimer - Time.deltaTime, 0, attackCooldown);
-        
-        // 사망
-        if (health <= 0) Destroy(gameObject);
+
+        if (health > 0) {
+            // anim.setTrigger("Hit);
+            // play sfx sound of hit
+        }
+        else {
+            coll.enabled = false;       // disable coliide2D
+            rigid.simulated = false;    // disable rigid2D
+            gameObject.SetActive(false);
+        }
+    }
+    
+
+    public void InitEnemy(SpawnData data) 
+    {
+        anim.runtimeAnimatorController = animCon[data.spriteType];
+        speed = data.speed;
+        health = data.health;
+        maxHealth = data.health;
+        attackCooldown = data.attackCooldown;
     }
 
     public void ChangeHealth(float amount) 

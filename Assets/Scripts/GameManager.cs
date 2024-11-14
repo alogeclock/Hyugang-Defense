@@ -6,16 +6,18 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager g;
+    public static GameManager instance;
+    public PoolManager pool;
+
     public int gold;
-    public int round;
+    // public int round;
     public int isGameOver;
     public float playTime;
     public Text playTimeUI;
     public Text goldUI;
 
     void Awake() {
-        g = this;
+        instance = this;
     }
 
     void Update() {

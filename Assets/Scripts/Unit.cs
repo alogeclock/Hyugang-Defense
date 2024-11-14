@@ -12,7 +12,7 @@ public class Unit : MonoBehaviour
     public float Cooldown;
     float Timer;
 
-    public bool isRanged; // 원거리 공격
+    public bool isRanged; // range attack
     public bool isFarm;
 
     public GameObject bulletPrefab;
@@ -28,7 +28,7 @@ public class Unit : MonoBehaviour
 
     void FixedUpdate()
     {
-        // 공격
+        // attack
         Timer = Mathf.Clamp(Timer - Time.deltaTime, 0, Cooldown);
 
         if (Timer <= 0) {
@@ -37,16 +37,16 @@ public class Unit : MonoBehaviour
             Timer = Cooldown;
         }
 
-        // 사망
+        // dead
         if (health <= 0) Destroy(gameObject);
     }
 
     void OnCollisionStay2D(Collision2D other) 
     {
-        Enemy enemy = other.collider.GetComponent<Enemy>(); // 적과 충돌
+        Enemy enemy = other.collider.GetComponent<Enemy>(); // collide with enemy
 
         if (Timer <= 0 && enemy != null) {
-            if (isRanged) return; // 원거리 공격 유닛이라면 충돌 데미지 0
+            if (isRanged) return; // if range attack unit, collide(melee) damage is 0
             enemy.ChangeHealth(-meleeDamage);
             Timer = Cooldown;
         }
@@ -59,7 +59,7 @@ public class Unit : MonoBehaviour
 
     public void RangeAttack() {
         // Debug.Log("Range Attack!");
-        GameObject bulletObject = Instantiate(bulletPrefab, rigid.position + Vector2.up * 0.5f, Quaternion.identity);
+        GameObject bulletObject = Instantiate(bulletPrefab, rigid.position + Vector2.up * 0.8f, Quaternion.identity);
 
         Bullet bullet = bulletObject.GetComponent<Bullet>();
         bullet.Launch(Vector2.right, 200);
@@ -67,6 +67,6 @@ public class Unit : MonoBehaviour
     }
 
     public void Farm() {
-        GameManager.g.gold += (int)earn;
+        GameManager.instance.gold += (int)earn;
     }
 }
