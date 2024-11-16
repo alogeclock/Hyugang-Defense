@@ -84,6 +84,7 @@ public class Enemy : MonoBehaviour
     {
         anim.runtimeAnimatorController = animCon[data.spriteType];
         speed = data.speed;
+        damage = data.damage;
         health = data.health;
         maxHealth = data.health;
         attackCooldown = data.attackCooldown;
