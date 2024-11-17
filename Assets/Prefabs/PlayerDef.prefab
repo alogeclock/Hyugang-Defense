@@ -175,7 +175,8 @@ MonoBehaviour:
   maxHealth: 100
   earn: 0
   meleeDamage: 0
-  Cooldown: 0
-  isRanged: 1
+  Cooldown: 2
+  isRanged: 0
   isFarm: 0
   bulletPrefab: {fileID: 8786277596421118920, guid: 5f29905db7444bc4dbe19671bd78ecd5, type: 3}
+  plantType: 1

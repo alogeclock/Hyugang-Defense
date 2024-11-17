@@ -19,6 +19,8 @@ public class Unit : MonoBehaviour
     Rigidbody2D rigid;
     Animator anim;
 
+    public PlantType plantType;
+
     void Awake() {
         health = maxHealth;
         Timer = Cooldown;

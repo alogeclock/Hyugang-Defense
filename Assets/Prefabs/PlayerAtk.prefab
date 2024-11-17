@@ -179,3 +179,4 @@ MonoBehaviour:
   isRanged: 1
   isFarm: 0
   bulletPrefab: {fileID: 8786277596421118920, guid: 5f29905db7444bc4dbe19671bd78ecd5, type: 3}
+  plantType: 2
