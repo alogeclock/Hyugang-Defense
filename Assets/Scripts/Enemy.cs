@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Runtime;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -78,10 +79,13 @@ public class Enemy : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-    
 
-    public void InitEnemy(SpawnData data) 
+    public void InitEnemy(SpawnData data, int line) 
     {
+        Debug.Log("Init Enemy Size is " + data.size);
+        spriter.sortingOrder = line;
+        transform.localScale = new Vector3(data.size, data.size, data.size);
+
         anim.runtimeAnimatorController = animCon[data.spriteType];
         speed = data.speed;
         damage = data.damage;

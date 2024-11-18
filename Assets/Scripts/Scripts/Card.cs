@@ -7,11 +7,11 @@ enum CardState
 {
     Disable,
     Cooling,
-    WaitingSun,
+    Waiting,
     Ready
 }
 
-public enum PlantType
+public enum UnitType
 {
     unit1,
     unit2,
@@ -20,9 +20,8 @@ public enum PlantType
 
 public class Card : MonoBehaviour
 {
-    //冷却 可以被点击  不可用
     private CardState cardState = CardState.Ready;
-    public PlantType plantType = PlantType.unit1;
+    public UnitType unitType = UnitType.unit1;
 
     public GameObject cardLight;
     public GameObject cardGray;
@@ -33,31 +32,22 @@ public class Card : MonoBehaviour
     private float cdTimer = 0;
 
     [SerializeField]
-    private int needSunPoint = 50;
+    private int gold;
 
-    public void Awake()
-    {
-        //TransitionToWaitingSun();
-    }
-
-    public void Start()
-    {
-        //cardState = CardState.Cooling;
-        //cdTimer = 0;
-        //cardLight.SetActive(false);
-        //cardGray.SetActive(true);
-        //cardMask.gameObject.SetActive(true);
+    private void Awake() {
+        gold = GameManager.instance.gold;
     }
 
     private void Update()
     {
+        gold = GameManager.instance.gold;
         switch (cardState)
         {
             case CardState.Cooling:
                 CoolingUpdate();
                 break;
-            case CardState.WaitingSun:
-                WaitingSunUpdate();
+            case CardState.Waiting:
+                WaitingUpdate();
                 break;
             case CardState.Ready:
                 ReadyUpdate();
@@ -70,47 +60,33 @@ public class Card : MonoBehaviour
     void CoolingUpdate()
     {
         cdTimer += Time.deltaTime;
-
         cardMask.fillAmount = (cdTime - cdTimer) / cdTime;
-
-        if (cdTimer >= cdTime)
-        {
-            TransitionToWaitingSun();
-        }
-
+        if (cdTimer >= cdTime) TransitionToWaiting();
     }
-    void WaitingSunUpdate()
+    void WaitingUpdate()
     {
-        if (needSunPoint <= 100)
-        {
-            TransitionToReady();
-       }
+        if (gold >= 100) TransitionToReady();
     }
-    void ReadyUpdate()
-    {
-        if (needSunPoint > 100)
-        {
-            TransitionToWaitingSun();
-        }
-
+    void ReadyUpdate() {
+        if (gold < 100) TransitionToWaiting();
     }
 
-    void TransitionToWaitingSun()
+    void TransitionToWaiting()
     {
-        cardState = CardState.WaitingSun;
-
+        cardState = CardState.Waiting;
         cardLight.SetActive(false);
         cardGray.SetActive(true);
         cardMask.gameObject.SetActive(false);
     }
+
     void TransitionToReady()
     {
         cardState = CardState.Ready;
-
         cardLight.SetActive(true);
         cardGray.SetActive(false);
         cardMask.gameObject.SetActive(false);
     }
+    
     void TransitionToCooling()
     {
         cardState = CardState.Cooling;
@@ -120,18 +96,17 @@ public class Card : MonoBehaviour
         cardMask.gameObject.SetActive(true);
     }
 
-    
-
     public void OnClick()
     {
-       // AudioManager.Instance.PlayClip(Config.btn_click);
+        // AudioManager.Instance.PlayClip(Config.btn_click);
         if (cardState == CardState.Disable) return;
-        if (needSunPoint > 100) return;
-
-        bool isSuccess = HandManager.Instance.AddPlant(plantType);
+        if (GameManager.instance.gold < 100) return;
+        bool isSuccess = HandManager.instance.AddUnit((int)unitType);
+        
         if (isSuccess)
         {
-          //  SunManager.Instance.SubSun(needSunPoint);
+            // SunManager.Instance.SubSun(needSunPoint);
+            GameManager.instance.gold -= 100;
             TransitionToCooling();
         }
     }
@@ -140,6 +115,7 @@ public class Card : MonoBehaviour
     {
         cardState = CardState.Disable;
     }
+    
     public void EnableCard()
     {
         TransitionToCooling();

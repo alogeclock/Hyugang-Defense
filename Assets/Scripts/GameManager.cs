@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -13,14 +14,21 @@ public class GameManager : MonoBehaviour
     // public int round;
     public int isGameOver;
     public float playTime;
+
+    public int monsterLevel;
+    public float spawnInterval;
+
     public Text playTimeUI;
     public Text goldUI;
 
     void Awake() {
         instance = this;
+        monsterLevel = 1;
+        gold = 300;
+        spawnInterval = 15.0f;
     }
 
-    void Update() {
+    void FixedUpdate() {
         playTime += Time.deltaTime;
         playTimeUI.text = SetTime((int)playTime);
 
@@ -33,6 +41,12 @@ public class GameManager : MonoBehaviour
             gold += 10;
         }
         */
+        
+        // 매 1분마다 소환되는 몬스터 레벨이 높아짐
+        monsterLevel =  (int)Mathf.Min(1f + (float)(playTime / 60), Spawner.instance.spawnData.Length);
+
+        // 점점 소환 속도가 빨라짐
+        spawnInterval = Mathf.Max(15.0f - (float)(playTime / 15), 3.0f);
     }
 
     string SetTime(int time) {

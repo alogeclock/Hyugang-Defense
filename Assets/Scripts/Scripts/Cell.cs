@@ -4,21 +4,28 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-    public Unit currentPlant;
+    public Unit currentUnit;
+    public int line;
 
     private void OnMouseDown()
     {
-        HandManager.Instance.OnCellClick(this);
+        HandManager.instance.OnCellClick(this);
     }
 
-    public bool AddPlant(Unit plant)
+    public bool AddUnit(Unit unit)
     {
-        if (currentPlant != null) return false;
+        if (currentUnit != null) return false;
+        
+        currentUnit = unit;
+        currentUnit.transform.position = transform.position;
+        
+        SpriteRenderer spriter = currentUnit.GetComponent<SpriteRenderer>();
+        BoxCollider2D unitColl = currentUnit.GetComponent<BoxCollider2D>();
 
-        currentPlant = plant;
-        currentPlant.transform.position = transform.position;
-      //  plant.TransitionToEnable();
+        spriter.sortingOrder = line;
+        if (unitColl != null) unitColl.enabled = true;
+    
+        // Unit.TransitionToEnable();
         return true;
     }
-
 }
