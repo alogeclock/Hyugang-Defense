@@ -21,6 +21,11 @@ public class Spawner : MonoBehaviour
         spawnPoint = GetComponentsInChildren<Transform>();
     }
 
+    private void Start()
+    {
+        spawnInterval = GameManager.instance.spawnInterval;
+    }
+
     private void FixedUpdate() 
     {
         timer += Time.deltaTime;
@@ -37,7 +42,8 @@ public class Spawner : MonoBehaviour
         GameObject enemy = GameManager.instance.pool.Get(0);
         
         int line = Random.Range(1, spawnPoint.Length);
-        int monsterType = Random.Range(0, GameManager.instance.monsterLevel);
+        int level = Mathf.Min(GameManager.instance.monsterLevel, spawnData.Length);
+        int monsterType = Random.Range(0, level);
 
         enemy.transform.position = spawnPoint[line].position;
         enemy.GetComponent<Enemy>().InitEnemy(spawnData[monsterType], line);

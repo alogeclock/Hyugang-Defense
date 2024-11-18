@@ -84,7 +84,7 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log("Init Enemy Size is " + data.size);
         spriter.sortingOrder = line;
-        transform.localScale = new Vector3(data.size, data.size, data.size);
+        transform.localScale = new Vector2(data.size, data.size);
 
         anim.runtimeAnimatorController = animCon[data.spriteType];
         speed = data.speed;
