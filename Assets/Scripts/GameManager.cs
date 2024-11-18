@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         monsterLevel = 1;
         gold = 300;
-        spawnInterval = 15.0f;
+        spawnInterval = 10.0f;
     }
 
     void FixedUpdate() {
@@ -42,11 +42,11 @@ public class GameManager : MonoBehaviour
         }
         */
         
-        // 매 1분마다 소환되는 몬스터 레벨이 높아짐
-        monsterLevel =  (int)Mathf.Min(1f + (float)(playTime / 60), Spawner.instance.spawnData.Length);
+        // 매 45초마다 소환되는 몬스터 레벨이 높아짐
+        monsterLevel =  (int)Mathf.Min(1f + (float)(playTime / 45), Spawner.instance.spawnData.Length);
 
         // 점점 소환 속도가 빨라짐
-        spawnInterval = Mathf.Max(15.0f - (float)(playTime / 15), 3.0f);
+        spawnInterval = Mathf.Max(10.0f - (float)(playTime / 15), 3.0f);
     }
 
     string SetTime(int time) {

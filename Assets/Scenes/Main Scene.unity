@@ -1569,9 +1569,9 @@ MonoBehaviour:
     attackCooldown: 1.5
     size: 1
   - spriteType: 2
-    speed: 0.5
-    health: 150
-    damage: 15
+    speed: 0.7
+    health: 200
+    damage: 25
     attackCooldown: 1
     size: 1
   - spriteType: 3
