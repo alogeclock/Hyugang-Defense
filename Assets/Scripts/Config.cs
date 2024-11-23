@@ -4,5 +4,6 @@ using UnityEngine;
 
 public static class Config
 {
-    public const string BGM1 = "Audio/bgm1"; // ÒôÆµÎÄ¼şÂ·¾¶
+    // Path to the BGM file
+    public const string BGM1 = "Audio/bgm1";
 }

@@ -10,20 +10,20 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        // 设置单例实例
+        // Set up singleton instance
         if (Instance == null)
         {
             Instance = this;
         }
         else
         {
-            Destroy(gameObject); // 确保只有一个 AudioManager 存在
+            Destroy(gameObject); // Ensure only one AudioManager exists
             return;
         }
 
-        DontDestroyOnLoad(gameObject); // 防止在场景切换时销毁
+        DontDestroyOnLoad(gameObject); // Prevent destruction when changing scenes
 
-        // 获取 AudioSource 组件
+        // Get the AudioSource component
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
@@ -33,16 +33,19 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        PlayBGM(Config.BGM1);
+        PlayBGM(Config.BGM1); // Start playing bgm1 on Start
     }
 
     public void PlayBGM(string path)
     {
-        AudioClip ac = Resources.Load<AudioClip>(path); // 从 Resources 加载音频
+        // Load audio clip from the Resources folder
+        AudioClip ac = Resources.Load<AudioClip>(path);
         if (ac != null)
         {
             audioSource.clip = ac;
+            audioSource.loop = true; // Enable looping
             audioSource.Play();
+            Debug.Log($"Now playing: {ac.name}");
         }
         else
         {
@@ -50,4 +53,5 @@ public class AudioManager : MonoBehaviour
         }
     }
 }
+
 
