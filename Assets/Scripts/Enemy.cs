@@ -65,6 +65,7 @@ public class Enemy : MonoBehaviour
         Vector2 nextVec = Vector2.left.normalized * speed * Time.fixedDeltaTime;
         rigid.MovePosition(rigid.position + nextVec);
         rigid.velocity = Vector2.zero;
+        anim.SetFloat("Speed", speed);
 
         // attack
         attackTimer = Mathf.Clamp(attackTimer - Time.deltaTime, 0, attackCooldown);

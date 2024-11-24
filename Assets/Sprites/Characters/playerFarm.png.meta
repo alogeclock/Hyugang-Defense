@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerFarm_0
+      name: Idle 0
       rect:
         serializedVersion: 2
         x: 0
@@ -144,7 +144,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerFarm_1
+      name: Idle 1
       rect:
         serializedVersion: 2
         x: 32
@@ -165,7 +165,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerFarm_2
+      name: Idle 2
       rect:
         serializedVersion: 2
         x: 64
@@ -196,9 +196,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PlayerFarm_0: 736796174
-      PlayerFarm_1: 1801197277
-      PlayerFarm_2: -783365552
+      Idle 0: 736796174
+      Idle 1: 1801197277
+      Idle 2: -783365552
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

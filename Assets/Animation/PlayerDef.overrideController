@@ -6,8 +6,8 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerFarm
+  m_Name: PlayerDef
   m_Controller: {fileID: 9100000, guid: 6924ce487c33cfc4794126aa3e21eb5c, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: ad55a6aa9219a7b4e99ba37525e26ad9, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: ad55a6aa9219a7b4e99ba37525e26ad9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4f15bff7a8ee3b34b8609f2f378368e5, type: 2}
