@@ -108,6 +108,7 @@ public class Card : MonoBehaviour
         {
             // SunManager.Instance.SubSun(needSunPoint);
             GameManager.instance.gold -= price;
+            AudioManager.instance.PlaySoundEffect("Audio/buttonclick");
             TransitionToCooling();
         }
     }

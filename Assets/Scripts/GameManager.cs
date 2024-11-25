@@ -20,8 +20,6 @@ public class GameManager : MonoBehaviour
 
     public Text playTimeUI;
     public Text goldUI;
-    public Text scriptUI;
-
     void Awake() {
         instance = this;
         monsterLevel = 1;

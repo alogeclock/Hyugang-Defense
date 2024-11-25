@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager Instance { get; private set; }
+    public static AudioManager instance { get; private set; }
 
     private AudioSource audioSource;
 
     private void Awake()
     {
         // Set up singleton instance
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
         }
         else
         {
@@ -50,6 +50,20 @@ public class AudioManager : MonoBehaviour
         else
         {
             Debug.LogError($"Failed to load AudioClip at path: {path}");
+        }
+    }
+
+    public void PlaySoundEffect(string path)
+    {
+        AudioClip ac = Resources.Load<AudioClip>(path);
+        if (ac != null)
+        {
+            audioSource.PlayOneShot(ac);
+            Debug.Log($"Played sound effect: {ac.name}");
+        }
+        else
+        {
+            Debug.LogError($"Failed to load sound effect at path: {path}");
         }
     }
 }
