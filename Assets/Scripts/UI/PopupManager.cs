@@ -45,7 +45,7 @@ public class PopupManager : MonoBehaviour
 
         levelUI.text = unit.level.ToString();
         costUI.text = (unit.price * 2).ToString();
-        hpUI.text = unit.health.ToString();
+        hpUI.text = unit.health.ToString() + "/" + unit.maxHealth.ToString();
     }
 
     public void SellUnit() {
