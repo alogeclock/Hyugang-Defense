@@ -38,8 +38,7 @@ public class HandManager : MonoBehaviour
     void FollowCursor()
     {
         if (currentUnit == null) return;
-        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPosition.z = 0.5f;
+        Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         currentUnit.transform.position = mouseWorldPosition;
 
         BoxCollider2D unitColl = currentUnit.GetComponent<BoxCollider2D>();
@@ -61,6 +60,11 @@ public class HandManager : MonoBehaviour
     public void OnUnitClick(Unit unit)
     {
         Debug.Log("Unit " + unit + "is Clicked");
+        PopupManager.instance.UpdateData(unit);
         GameManager.instance.popup.SetActive(true);
-    }   
+    }
+    
+    public void OnSellButtonClick() {
+        PopupManager.instance.SellUnit();
+    }
 }
