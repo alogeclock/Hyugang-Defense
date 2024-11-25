@@ -6942,7 +6942,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 150
+  m_Text: 125
 --- !u!114 &861940764200459771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7237,7 +7237,7 @@ MonoBehaviour:
   cardMask: {fileID: 2038484628}
   cdTime: 2
   gold: 0
-  price: 150
+  price: 125
 --- !u!224 &2370197946251749524
 RectTransform:
   m_ObjectHideFlags: 0
