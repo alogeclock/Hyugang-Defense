@@ -19,7 +19,7 @@ public class HandManager : MonoBehaviour
         FollowCursor();
     }
 
-    public bool AddUnit(int unitType)
+    public bool AddUnit(int unitType, int price)
     {
         if (currentUnit != null) return false;
         
@@ -30,6 +30,7 @@ public class HandManager : MonoBehaviour
         }
 
         currentUnit = GameObject.Instantiate(unitPrefab);
+        currentUnit.price = price;
         
         return true;
     }
@@ -50,10 +51,16 @@ public class HandManager : MonoBehaviour
         if (currentUnit == null) return;
         bool isSuccess = cell.AddUnit(currentUnit);
         
-        if (isSuccess)
-        { 
+        if (isSuccess) { 
+            currentUnit.isInCell = true;
             currentUnit = null;
            // AudioManager.Instance.PlayClip(Config.plant);
         }
     }
+
+    public void OnUnitClick(Unit unit)
+    {
+        Debug.Log("Unit " + unit + "is Clicked");
+        GameManager.instance.popup.SetActive(true);
+    }   
 }

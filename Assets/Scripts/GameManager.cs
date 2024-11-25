@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public PoolManager pool;
+    public GameObject popup;
 
     public int gold;
     // public int round;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
         monsterLevel = 1;
         gold = 300;
         spawnInterval = 10.0f;
+        popup.SetActive(false);
     }
 
     void FixedUpdate() {

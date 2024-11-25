@@ -176,11 +176,14 @@ MonoBehaviour:
   unitType: 0
   health: 0
   maxHealth: 100
+  level: 0
+  price: 150
   earn: 5
   meleeDamage: 0
   Cooldown: 1
   isRanged: 0
   isFarm: 1
+  isInCell: 0
   bulletPrefab: {fileID: 8786277596421118920, guid: 5f29905db7444bc4dbe19671bd78ecd5, type: 3}
   spriter: {fileID: 0}
   coll: {fileID: 0}

@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour
         attackTimer = Mathf.Clamp(attackTimer - Time.deltaTime, 0, attackCooldown);
 
         if (health > 0) {
-            // anim.setTrigger("Hit);
+            // anim.setTrigger("Hit");
             // play sfx sound of hit
         }
         else {

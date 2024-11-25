@@ -102,7 +102,7 @@ public class Card : MonoBehaviour
         // AudioManager.Instance.PlayClip(Config.btn_click);
         if (cardState == CardState.Disable) return;
         if (GameManager.instance.gold < price) return;
-        bool isSuccess = HandManager.instance.AddUnit((int)unitType);
+        bool isSuccess = HandManager.instance.AddUnit((int)unitType, price);
         
         if (isSuccess)
         {
