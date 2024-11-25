@@ -1591,7 +1591,7 @@ MonoBehaviour:
     damage: 10
     attackCooldown: 1.5
     size: 1
-  - spriteType: 3
+  - spriteType: 2
     speed: 0.35
     health: 500
     damage: 60
@@ -3957,6 +3957,7 @@ MonoBehaviour:
   spawnInterval: 0
   playTimeUI: {fileID: 250672147}
   goldUI: {fileID: 284411540}
+  scriptUI: {fileID: 0}
 --- !u!4 &1860728986
 Transform:
   m_ObjectHideFlags: 0
