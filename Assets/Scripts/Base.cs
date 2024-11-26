@@ -15,7 +15,6 @@ public class Base : MonoBehaviour
     void FixedUpdate() {
         if (health <= 0) {
             GameManager.instance.Lose();
-            Destroy(gameObject);
             // if (!isFence) GameOver() output function
         }
     }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,12 +9,14 @@ public class SceneChanger : MonoBehaviour
     public static SceneChanger instance;
     
     void Awake() {
+        /*
         if (instance != null) {
             Destroy(gameObject);
             return;
         }
+        */
         instance = this;
-        DontDestroyOnLoad(instance);
+        // DontDestroyOnLoad(instance);
     }
 
     public void LoadScene(string sceneName) {
@@ -34,13 +37,16 @@ public class SceneChanger : MonoBehaviour
     }
 
     public void SceneToPrologue() {
-        gameObject.SetActive(false);
+        // gameObject.SetActive(false);
         SceneManager.LoadScene("Prologue");
     }
     
     public void SceneToMenu() {
+        if (GameManager.instance != null && GameManager.instance.gameObject != null) {
+            Destroy(GameManager.instance.gameObject);
+        }
         SceneManager.LoadScene("Menu");
-        gameObject.SetActive(true);
+        // gameObject.SetActive(true);
     }
 
     public void SceneToWin() {

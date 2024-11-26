@@ -17,12 +17,9 @@ public class PopupManager : MonoBehaviour
     public Text hpUI;
     public Text costUI;
 
-    public bool isActive;
-
     void Awake()
     {
         instance = this;
-        isActive = false;
     }
 
     void FixedUpdate() 

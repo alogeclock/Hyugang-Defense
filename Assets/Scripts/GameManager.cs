@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Transactions;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -11,7 +12,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public PoolManager pool;
     public GameObject popup;
-    public GameObject setting;
 
     public int gold;
     public int round;
@@ -40,7 +40,6 @@ public class GameManager : MonoBehaviour
         scoreTimer = 0.0f;
         spawnInterval = 10.0f;
         popup.SetActive(false);
-        setting.SetActive(false);
     }
 
     void FixedUpdate() {
@@ -74,6 +73,8 @@ public class GameManager : MonoBehaviour
             isBossSummoned = true;
         }
 
+        if (isBossSummoned && !PoolManager.FindObjectOfType<Enemy>()) Win();
+
         // 매 라운드마다 소환되는 몬스터 레벨이 높아짐
         monsterLevel = (int)Mathf.Min(round, Spawner.instance.spawnData.Length);
 
@@ -83,10 +84,12 @@ public class GameManager : MonoBehaviour
     }
 
     public void Win() {
+        Destroy(gameObject);
         SceneChanger.instance.SceneToWin();
     }
 
     public void Lose() {
+        Destroy(gameObject);
         SceneChanger.instance.SceneToLose();
     }
 

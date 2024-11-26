@@ -6,10 +6,12 @@ using UnityEngine.EventSystems;
 public class SettingManager : MonoBehaviour
 {
     public static SettingManager instance;
+    public GameObject setting;
 
     void Awake()
     {
         instance = this;
+        setting.SetActive(false);
     }
 
     void FixedUpdate() 
@@ -22,20 +24,19 @@ public class SettingManager : MonoBehaviour
 
     public void SceneToMenu() {
         Disable();
-        Destroy(GameManager.instance);
+        if (GameManager.instance != null) Destroy(GameManager.instance);
         SceneChanger.instance.SceneToMenu();
-        
     }
 
     public void Enable() {
         Time.timeScale = 0;
-        GameManager.instance.setting.SetActive(true);
-        GameManager.instance.isPopupped = true;
+        setting.SetActive(true);
+        if (GameManager.instance != null) GameManager.instance.isPopupped = true;
     }
 
     public void Disable() {
-        GameManager.instance.setting.SetActive(false);
-        GameManager.instance.isPopupped = false;
+        setting.SetActive(false);
+        if (GameManager.instance != null) GameManager.instance.isPopupped = false;
         Time.timeScale = 1;
     }
 }
