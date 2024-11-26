@@ -26,6 +26,8 @@ public class Card : MonoBehaviour
     public GameObject cardLight;
     public GameObject cardGray;
     public Image cardMask;
+    
+    public Text priceUI;
 
     [SerializeField]
     private float cdTime;
@@ -35,6 +37,8 @@ public class Card : MonoBehaviour
     public int price;
 
     private void Awake() {
+        price = HandManager.instance.unitPrefabList[(int)unitType].price;
+        priceUI.text = price.ToString();
     }
 
     private void Update()

@@ -6948,7 +6948,6 @@ MonoBehaviour:
   statNumberUI: {fileID: 1788115846}
   hpUI: {fileID: 914429669}
   costUI: {fileID: 1971243267}
-  isActive: 0
 --- !u!1 &1788115844
 GameObject:
   m_ObjectHideFlags: 0
@@ -9287,6 +9286,7 @@ MonoBehaviour:
   cardLight: {fileID: 280877578}
   cardGray: {fileID: 1992674222}
   cardMask: {fileID: 2038484628}
+  priceUI: {fileID: 800754269100592431}
   cdTime: 2
   price: 125
 --- !u!224 &2370197946251749524
@@ -10066,6 +10066,7 @@ MonoBehaviour:
   cardLight: {fileID: 1006178781652894659}
   cardGray: {fileID: 5369385149513700527}
   cardMask: {fileID: 2236585684391552171}
+  priceUI: {fileID: 5722465495891646682}
   cdTime: 2
   price: 150
 --- !u!1 &6909833404483510072
@@ -10445,6 +10446,7 @@ MonoBehaviour:
   cardLight: {fileID: 1595929827}
   cardGray: {fileID: 554436418}
   cardMask: {fileID: 2043427696}
+  priceUI: {fileID: 4286105885531306282}
   cdTime: 2
   price: 100
 --- !u!224 &8861602671289786392

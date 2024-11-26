@@ -87,7 +87,7 @@ public class PopupManager : MonoBehaviour
         if (unit == null || unit.level >= 3) return;
         Debug.Log("after null check in upgrade unit");
 
-        int upgradePrice = (currentUnit.level + unit.level) * unit.price;
+        int upgradePrice = (currentUnit.level + 1) * unit.price;
 
         if (GameManager.instance.gold >= upgradePrice) { // 업그레이드가 가능할 경우
             Disable(); // 팝업 비활성화
