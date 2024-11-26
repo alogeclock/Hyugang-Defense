@@ -28,20 +28,17 @@ public class Card : MonoBehaviour
     public Image cardMask;
 
     [SerializeField]
-    private float cdTime = 2.0f;
-    private float cdTimer = 0.0f;
+    private float cdTime;
+    private float cdTimer;
 
     [SerializeField]
-    private int gold;
     public int price;
 
     private void Awake() {
-        gold = GameManager.instance.gold;
     }
 
     private void Update()
     {
-        gold = GameManager.instance.gold;
         switch (cardState)
         {
             case CardState.Cooling:
@@ -66,10 +63,10 @@ public class Card : MonoBehaviour
     }
     void WaitingUpdate()
     {
-        if (gold >= price) TransitionToReady();
+        if (GameManager.instance.gold >= price) TransitionToReady();
     }
     void ReadyUpdate() {
-        if (gold < price) TransitionToWaiting();
+        if (GameManager.instance.gold < price) TransitionToWaiting();
     }
 
     void TransitionToWaiting()
@@ -102,12 +99,11 @@ public class Card : MonoBehaviour
         // AudioManager.Instance.PlayClip(Config.btn_click);
         if (cardState == CardState.Disable) return;
         if (GameManager.instance.gold < price) return;
-        bool isSuccess = HandManager.instance.AddUnit((int)unitType, price);
+        bool isSuccess = HandManager.instance.AddUnit((int)unitType);
         
         if (isSuccess)
         {
             // SunManager.Instance.SubSun(needSunPoint);
-            GameManager.instance.gold -= price;
             AudioManager.instance.PlaySoundEffect("Audio/buttonclick");
             TransitionToCooling();
         }

@@ -34,6 +34,6 @@ public class Bullet : MonoBehaviour
 
     void Update() 
     {
-        if (transform.position.magnitude > 50.0f) Destroy(gameObject);
+        if (transform.position.magnitude > 20.0f) Destroy(gameObject);
     }
 }

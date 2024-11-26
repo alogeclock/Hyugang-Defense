@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class ScriptManager : MonoBehaviour
 {
     public Text scriptUI;
-    string[] scriptData;
+    string[] prologueScript;
     private int idx;
 
     void Awake()
     {
-        scriptData = new string[] 
+        prologueScript = new string[] 
         {
             "좀비 바이러스가 창궐한 지도\n어느덧 3일 차···", 
             "서강고등학교에도\n좀비 바이러스의 불씨가 들이닥쳤다!", 
@@ -30,12 +30,12 @@ public class ScriptManager : MonoBehaviour
 
     public void OnScriptClick() 
     {
-        if (idx < scriptData.Length - 1) idx++;
+        if (idx < prologueScript.Length - 1) idx++;
         else SceneChanger.instance.SceneToPlay();
     }
 
     void UpdateText()
     {
-        scriptUI.text = scriptData[idx];
+        scriptUI.text = prologueScript[idx];
     }
 }

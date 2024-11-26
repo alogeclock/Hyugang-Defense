@@ -35,6 +35,12 @@ public class Spawner : MonoBehaviour
         Spawn();
         timer = 0.0f;
     }
+
+    public void StopSpawning()
+    {
+        timer = 0.0f;
+        spawnInterval = 1000000.0f;
+    }
     
     public void Spawn()
     {
@@ -43,8 +49,15 @@ public class Spawner : MonoBehaviour
         
         int line = Random.Range(1, spawnPoint.Length);
         int level = Mathf.Min(GameManager.instance.monsterLevel, spawnData.Length);
-        int monsterType = Random.Range(0, level);
+        int monsterType = Random.Range(0, level); // 33.3%
 
+        enemy.transform.position = spawnPoint[line].position;
+        enemy.GetComponent<Enemy>().InitEnemy(spawnData[monsterType], line);
+    }
+
+    public void SpawnBoss(int monsterType, int line)
+    {
+        GameObject enemy = GameManager.instance.pool.Get(0);
         enemy.transform.position = spawnPoint[line].position;
         enemy.GetComponent<Enemy>().InitEnemy(spawnData[monsterType], line);
     }
@@ -59,4 +72,5 @@ public class SpawnData
     public int damage;
     public float attackCooldown;
     public float size;
+    public bool isBoss;
 }

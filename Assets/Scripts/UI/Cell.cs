@@ -18,6 +18,8 @@ public class Cell : MonoBehaviour
         
         currentUnit = unit;
         currentUnit.transform.position = transform.position;
+        GameManager.instance.gold -= currentUnit.price;
+        GameManager.instance.score += currentUnit.price;
         
         SpriteRenderer spriter = currentUnit.GetComponent<SpriteRenderer>();
         BoxCollider2D unitColl = currentUnit.GetComponent<BoxCollider2D>();

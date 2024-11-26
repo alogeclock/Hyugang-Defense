@@ -11,7 +11,7 @@ public class Unit : MonoBehaviour
     public int price;
 
     public float earn;
-    public float meleeDamage;
+    public float damage;
     public float Cooldown;
     float Timer;
 
@@ -58,7 +58,7 @@ public class Unit : MonoBehaviour
 
         if (Timer <= 0 && enemy != null) {
             if (isRanged || !isInCell) return; // if range attack unit, collide(melee) damage is 0
-            enemy.ChangeHealth(-meleeDamage);
+            enemy.ChangeHealth(-damage);
             Timer = Cooldown;
         }
     }
@@ -73,22 +73,13 @@ public class Unit : MonoBehaviour
 
         GameObject bulletObject = Instantiate(bulletPrefab, rigid.position + Vector2.up * 1.2f, Quaternion.identity);
         Bullet bullet = bulletObject.GetComponent<Bullet>();
-        bullet.bulletDamage *= level; // level에 따라 데미지 배수로 증가
+        bullet.bulletDamage = (int)damage;
         bullet.Launch(Vector2.right, 200);
         // anim.SetTrigger("Launch");
     }
 
     public void Farm() {
         GameManager.instance.gold += (int)earn;
-    }
-    
-    public void Upgrade() {
-        // 레벨 증가
-        // 체력 증가
-        // 공격 속도 증가
-        // price 값에 따라 업그레이드 가격 증가
-        // 업그레이드 가격에 따라 price 값 증가 (판매 시 주는 돈 증가)
-        // if (isFarm) earn 값 증가
     }
 
     private void OnMouseDown()

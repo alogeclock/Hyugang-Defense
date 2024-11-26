@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     float attackTimer;
 
     bool isLive;
+    bool isBoss;
 
     Animator anim;
     SpriteRenderer spriter;
@@ -75,8 +76,11 @@ public class Enemy : MonoBehaviour
             // play sfx sound of hit
         }
         else {
+            GameManager.instance.score += maxHealth;
             coll.enabled = false;       // disable coliide2D
             rigid.simulated = false;    // disable rigid2D
+
+            if (isBoss) GameManager.instance.Win();
             gameObject.SetActive(false);
         }
     }
@@ -93,6 +97,7 @@ public class Enemy : MonoBehaviour
         health = data.health;
         maxHealth = data.health;
         attackCooldown = data.attackCooldown;
+        isBoss = data.isBoss;
     }
 
     public void ChangeHealth(float amount) 

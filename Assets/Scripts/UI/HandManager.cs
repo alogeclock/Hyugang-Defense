@@ -17,9 +17,10 @@ public class HandManager : MonoBehaviour
     private void Update()
     {
         FollowCursor();
+        CancelUnit();
     }
 
-    public bool AddUnit(int unitType, int price)
+    public bool AddUnit(int unitType)
     {
         if (currentUnit != null) return false;
         
@@ -30,9 +31,18 @@ public class HandManager : MonoBehaviour
         }
 
         currentUnit = GameObject.Instantiate(unitPrefab);
-        currentUnit.price = price;
         
         return true;
+    }
+
+    public void CancelUnit()
+    {
+        if (Input.GetMouseButtonDown(1)) {
+            if (currentUnit != null) {
+                Destroy(currentUnit.gameObject);
+                currentUnit = null;
+            } 
+        }
     }
 
     void FollowCursor()
@@ -59,12 +69,9 @@ public class HandManager : MonoBehaviour
 
     public void OnUnitClick(Unit unit)
     {
-        Debug.Log("Unit " + unit + "is Clicked");
+        if (currentUnit != null || GameManager.instance.isPopupped) return;
+        // Debug.Log("Unit " + unit + "is Clicked");
         PopupManager.instance.UpdateData(unit);
-        GameManager.instance.popup.SetActive(true);
-    }
-    
-    public void OnSellButtonClick() {
-        PopupManager.instance.SellUnit();
+        PopupManager.instance.Enable();
     }
 }
