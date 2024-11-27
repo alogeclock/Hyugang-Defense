@@ -46,6 +46,7 @@ public class Spawner : MonoBehaviour
     {
         // get enemy's prefab
         GameObject enemy = GameManager.instance.pool.Get(0);
+        enemy.tag = "Enemy";
         
         int line = Random.Range(1, spawnPoint.Length);
         int level = Mathf.Min(GameManager.instance.monsterLevel, spawnData.Length);
@@ -58,6 +59,7 @@ public class Spawner : MonoBehaviour
     public void SpawnBoss(int monsterType, int line)
     {
         GameObject enemy = GameManager.instance.pool.Get(0);
+        enemy.tag = "Enemy";
         enemy.transform.position = spawnPoint[line].position;
         enemy.GetComponent<Enemy>().InitEnemy(spawnData[monsterType], line);
     }

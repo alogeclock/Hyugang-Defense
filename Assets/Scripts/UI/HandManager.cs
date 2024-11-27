@@ -17,7 +17,7 @@ public class HandManager : MonoBehaviour
     private void Update()
     {
         FollowCursor();
-        CancelUnit();
+        if (Input.GetMouseButtonDown(1)) CancelUnit();
     }
 
     public bool AddUnit(int unitType)
@@ -37,11 +37,9 @@ public class HandManager : MonoBehaviour
 
     public void CancelUnit()
     {
-        if (Input.GetMouseButtonDown(1)) {
-            if (currentUnit != null) {
-                Destroy(currentUnit.gameObject);
-                currentUnit = null;
-            } 
+        if (currentUnit != null) {
+            Destroy(currentUnit.gameObject);
+            currentUnit = null;
         }
     }
 
