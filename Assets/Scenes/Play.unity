@@ -2739,11 +2739,11 @@ MonoBehaviour:
     isBoss: 0
   - spriteType: 2
     speed: 0.5
-    health: 10000
+    health: 15000
     damage: 75
-    attackCooldown: 1.5
+    attackCooldown: 1
     size: 3
-    isBoss: 0
+    isBoss: 1
   spawnPoint: []
 --- !u!1 &619394800
 GameObject:
@@ -10447,7 +10447,7 @@ MonoBehaviour:
   cardGray: {fileID: 554436418}
   cardMask: {fileID: 2043427696}
   priceUI: {fileID: 4286105885531306282}
-  cdTime: 2
+  cdTime: 5
   price: 100
 --- !u!224 &8861602671289786392
 RectTransform:

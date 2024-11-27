@@ -95,19 +95,19 @@ public class PopupManager : MonoBehaviour
             unit.level++;                         // 유닛 레벨 상승
             
             if (unit.isFarm) { // 파밍 유닛
-                unit.maxHealth = unit.maxHealth += 100;
+                unit.maxHealth += 100;
                 unit.health = unit.maxHealth;
                 unit.earn += 5;
             } 
             
             else if (unit.isRanged) { // 공격 유닛
-                unit.maxHealth = unit.maxHealth += 100;
+                unit.maxHealth += 100;
                 unit.health = unit.maxHealth;
                 unit.damage += 10;
             }
 
             else { // 방어 유닛
-                unit.maxHealth = unit.maxHealth += 250;
+                unit.maxHealth += 200;
                 unit.health = unit.maxHealth;
             }
         }
