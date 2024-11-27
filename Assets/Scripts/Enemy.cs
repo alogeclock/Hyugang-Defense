@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     float attackTimer;
 
     bool isLive;
-    bool isBoss;
+    public bool isBoss;
 
     Animator anim;
     SpriteRenderer spriter;
