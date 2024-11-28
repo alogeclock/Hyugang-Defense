@@ -76,6 +76,11 @@ public class Unit : MonoBehaviour
         bullet.bulletDamage = (int)damage;
         bullet.Launch(Vector2.right, 200);
         // anim.SetTrigger("Launch");
+
+        // **************************************************
+        // [아군 유닛이 공격하는 소리 넣을 곳] ex) 방망이 던지는 소리
+        // player unit's attack sound ex) sound of throwing bats
+        // **************************************************
     }
 
     public void Farm() {

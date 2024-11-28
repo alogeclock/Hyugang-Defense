@@ -70,11 +70,13 @@ public class PopupManager : MonoBehaviour
     }
 
     public void Enable() {
+        AudioManager.instance.PlaySoundEffect("Audio/buttonclick");
         GameManager.instance.popup.SetActive(true);
         GameManager.instance.isPopupped = true;
     }
 
     public void Disable() {
+        AudioManager.instance.PlaySoundEffect("Audio/buttonclick");
         GameManager.instance.popup.SetActive(false);
         GameManager.instance.isPopupped = false;
     }
@@ -86,6 +88,7 @@ public class PopupManager : MonoBehaviour
         Debug.Log("before null check in upgrade unit");
         if (unit == null || unit.level >= 3) return;
         Debug.Log("after null check in upgrade unit");
+        AudioManager.instance.PlaySoundEffect("Audio/buttonclick");
 
         int upgradePrice = (currentUnit.level + 1) * unit.price;
 
@@ -110,6 +113,11 @@ public class PopupManager : MonoBehaviour
                 unit.maxHealth += 200;
                 unit.health = unit.maxHealth;
             }
+
+            // **************************************************
+            // [유닛이 업그레이드되는 소리 넣을 곳] ex. 샤라라랑~
+            // unit upgrade sound
+            // **************************************************
         }
     }
 }

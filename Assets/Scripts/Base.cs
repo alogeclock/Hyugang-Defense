@@ -15,6 +15,12 @@ public class Base : MonoBehaviour
     void FixedUpdate() {
         if (health <= 0) {
             GameManager.instance.Lose();
+
+            // **************************************************
+            // [기지가 무너지는 소리 넣을 곳]
+            // sound of the base being destroyed
+            // **************************************************
+
             // if (!isFence) GameOver() output function
         }
     }

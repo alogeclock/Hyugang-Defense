@@ -34,6 +34,12 @@ public class SceneChanger : MonoBehaviour
 
     public void SceneToPlay() {
         SceneManager.LoadScene("Play");
+    
+        // **************************************************
+        // [재생되는 BGM을 플레이 중 BGM으로 변경]
+        // 1. change to gameplay BGM for Play
+        // **************************************************
+
     }
 
     public void SceneToPrologue() {
@@ -46,15 +52,31 @@ public class SceneChanger : MonoBehaviour
             Destroy(GameManager.instance.gameObject);
         }
         SceneManager.LoadScene("Menu");
+
+        // **************************************************
+        // [재생되는 BGM을 승리 시 BGM으로 변경]
+        // 1. change to gameplay BGM for menu
+        // **************************************************
+
         // gameObject.SetActive(true);
     }
 
     public void SceneToWin() {
         SceneManager.LoadScene("Win");
+        
+        // **************************************************
+        // [재생되는 BGM을 승리 시 BGM으로 변경 or 승리 시 효과음을 재생, 둘 중 택1]
+        // 1. change to gameplay BGM for win or 2. play SFX sound of win
+        // **************************************************
     }
 
     public void SceneToLose() {
         SceneManager.LoadScene("Lose");
+
+        // **************************************************
+        // [재생되는 BGM을 패배 시 BGM으로 변경 or 패배 시 효과음을 재생, 둘 중 택1]
+        // 1. change to gameplay BGM for defeat or 2. play SFX sound of defeat
+        // **************************************************
     }
 
     public void Exit() {

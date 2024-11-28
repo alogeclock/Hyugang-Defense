@@ -34,6 +34,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         PlayBGM(Config.BGM1); // Start playing bgm1 on Start
+
     }
 
     public void PlayBGM(string path)

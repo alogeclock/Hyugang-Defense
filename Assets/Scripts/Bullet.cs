@@ -28,6 +28,10 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
                 enemy.ChangeHealth(-bulletDamage);
                 Debug.Log(this.gameObject.name + " is Attacked " + enemy.gameObject.name);
+                // **************************************************
+                // [적 몬스터가 공격당하는 소리 넣을 곳]
+                // place for sound of enemy monster being attacked
+                // **************************************************
             }
         }
     }

@@ -53,7 +53,10 @@ public class Enemy : MonoBehaviour
         {
             if (unit != null) unit.ChangeHealth(-damage);
             else if (home != null) home.ChangeHealth(-damage);
-            // [적 몬스터 공격 소리 넣는 곳] ex. 좀비가 깨무는 소리
+            // **************************************************
+            // [적 몬스터가 공격하는 소리 넣을 곳] ex. 좀비가 깨무는 소리
+            // enemy unit's attack sound ex. zombie's biting sound
+            // **************************************************
             attackTimer = attackCooldown;
         }
     }
