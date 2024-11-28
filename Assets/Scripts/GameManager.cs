@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         }
         */
         
-        // 1분 30초마다 1라운드가 진행됨, 최대 4라운드
+        // 1분마다 1라운드가 진행됨, 최대 4라운드
         round = (int)Mathf.Min(1f + (float)(playTime / 60), 5);
 
         // 4라운드가 종료되면 Spawner가 멈추고, 보스 몬스터를 소환함
