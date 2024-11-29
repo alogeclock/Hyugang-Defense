@@ -65,6 +65,26 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    IEnumerator Die()
+    {
+        Debug.Log("enemy is died");
+        isLive = false;
+
+        // 사망 사운드 재생
+        if (deathSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(deathSound);
+            yield return new WaitForSeconds(deathSound.length); // 사운드 길이만큼 대기
+        }
+
+        GameManager.instance.score += maxHealth;
+        coll.enabled = false;       // 콜라이더 비활성화
+        rigid.simulated = false;    // Rigidbody 비활성화
+
+        if (isBoss) GameManager.instance.Win();
+        gameObject.SetActive(false); // 게임 오브젝트 비활성화
+    }
+
     void FixedUpdate()
     {
         if (!isLive) return;
@@ -83,21 +103,7 @@ public class Enemy : MonoBehaviour
             // 播放受击音效（可以选择性播放）
             // anim.SetTrigger("Hit");
         }
-        else
-        {
-            // 播放死亡音效
-            if (deathSound != null && audioSource != null)
-            {
-                audioSource.PlayOneShot(deathSound); // 播放死亡音效
-            }
-
-            GameManager.instance.score += maxHealth;
-            coll.enabled = false;       // 禁用碰撞体
-            rigid.simulated = false;    // 禁用刚体
-
-            if (isBoss) GameManager.instance.Win();
-            gameObject.SetActive(false);
-        }
+        else StartCoroutine(Die());
     }
 
     public void InitEnemy(SpawnData data, int line) 
@@ -117,6 +123,7 @@ public class Enemy : MonoBehaviour
 
     public void ChangeHealth(float amount) 
     {
+        Debug.Log("enemy is attacked");
         health = Mathf.Clamp(health + amount, 0, maxHealth);
     }
 }
