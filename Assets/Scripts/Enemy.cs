@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class Enemy : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class Enemy : MonoBehaviour
     BoxCollider2D coll;
     Rigidbody2D rigid;
 
-    public AudioClip attackSound; // 攻击音效
+    public AudioClip hitSound; // 攻击音效
     public AudioClip deathSound;  // 死亡音效
     private AudioSource audioSource;
 
@@ -42,25 +43,25 @@ public class Enemy : MonoBehaviour
         health = maxHealth;
         coll.enabled = true;
         rigid.simulated = true;
+        spriter.color = new Color (1f, 1f, 1f, 1f);
     }
 
     void OnCollisionStay2D(Collision2D other)
     {
         if (!isLive) return;
-        Unit unit = other.collider.GetComponent<Unit>(); // 碰撞到单位
-        Base home = other.collider.GetComponent<Base>(); // 碰撞到基地
+        Unit unit = other.collider.GetComponent<Unit>();
+        Base home = other.collider.GetComponent<Base>();
 
         if (attackTimer <= 0)
         {
-            if (unit != null) unit.ChangeHealth(-damage);
-            else if (home != null) home.ChangeHealth(-damage);
-
-            // 播放敌人攻击音效
-            if (attackSound != null && audioSource != null)
-            {
-                audioSource.PlayOneShot(attackSound); // 播放音效
+            if (unit != null || home != null) {
+                if (unit != null) unit.ChangeHealth(-damage);
+                else if (home != null) home.ChangeHealth(-damage);
             }
-
+            else {
+                attackTimer = 0;
+                return;
+            }
             attackTimer = attackCooldown;
         }
     }
@@ -75,6 +76,20 @@ public class Enemy : MonoBehaviour
         {
             audioSource.PlayOneShot(deathSound);
             yield return new WaitForSeconds(deathSound.length); // 사운드 길이만큼 대기
+        }
+
+        Color spriteColor = spriter.color;
+        float fadeDuration = 0.5f; // 페이드 아웃 지속 시간
+        float timer = 0f;
+
+        // 페이드 아웃 루프
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, timer / fadeDuration);
+            spriteColor.a = alpha;
+            spriter.color = spriteColor;
+            yield return null;
         }
 
         GameManager.instance.score += maxHealth;
@@ -98,12 +113,39 @@ public class Enemy : MonoBehaviour
         // attack
         attackTimer = Mathf.Clamp(attackTimer - Time.deltaTime, 0, attackCooldown);
 
-        if (health > 0)
-        {
-            // 播放受击音效（可以选择性播放）
-            // anim.SetTrigger("Hit");
-        }
+        if (health > 0) {}
         else StartCoroutine(Die());
+    }
+
+    
+    IEnumerator Hit() {
+        Debug.Log(gameObject + "is Attacked by Zombie (in Hit())");
+        Color spriteColor = spriter.color;
+        Color hitColor = new Color(1f, 0.8f, 0.8f, 1f);
+
+        float fadeDuration = 0.2f; // 페이드 아웃 지속 시간
+        float timer = 0f;
+
+        // 하얀색으로 전환
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+            spriter.color = Color.Lerp(spriteColor, hitColor, timer / fadeDuration);
+            Debug.Log("Original Color: " + spriter.color);
+            yield return null;
+        }
+
+        // 원래 색으로 복구
+        timer = 0f;
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+            spriter.color = Color.Lerp(hitColor, spriteColor, timer / fadeDuration);
+            Debug.Log("Original Color: " + spriter.color);
+            yield return null;
+        }
+
+        spriter.color = spriteColor;
     }
 
     public void InitEnemy(SpawnData data, int line) 
@@ -112,11 +154,14 @@ public class Enemy : MonoBehaviour
         spriter.sortingOrder = line;
         transform.localScale = new Vector2(data.size, data.size);
 
+        int round = Mathf.Min(GameManager.instance.round - 1, animCon.Length - 1);
+        Debug.Log("round number in InitEnemy() is " + round);
+
         anim.runtimeAnimatorController = animCon[data.spriteType];
         speed = data.speed;
         damage = data.damage;
-        health = data.health;
-        maxHealth = data.health;
+        health = data.health[round];
+        maxHealth = data.health[round];
         attackCooldown = data.attackCooldown;
         isBoss = data.isBoss;
     }
@@ -125,5 +170,10 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log("enemy is attacked");
         health = Mathf.Clamp(health + amount, 0, maxHealth);
+        if (amount < 0) {
+            
+            audioSource.PlayOneShot(hitSound); // 播放音效    
+            StartCoroutine(Hit()); // 붉은색으로 깜빡임
+        }  
     }
 }

@@ -7,6 +7,8 @@ public class PoolManager : MonoBehaviour
     public GameObject[] prefabs;
     List<GameObject>[] pools;
 
+    int round;
+
     void Awake()
     {
         pools = new List<GameObject>[prefabs.Length];

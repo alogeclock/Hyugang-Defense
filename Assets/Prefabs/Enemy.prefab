@@ -122,18 +122,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.44684803, y: 0.70329046}
+  m_Offset: {x: -0.51840353, y: 0.70329046}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 2.6666667, y: 2.6666667}
+    oldSize: {x: 2.1333334, y: 2.1333334}
     newSize: {x: 2.6666667, y: 2.6666667}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 0.98259103, y: 1.0328565}
+  m_Size: {x: 1.1257019, y: 1.0328565}
   m_EdgeRadius: 0
 --- !u!50 &3796834706130946381
 Rigidbody2D:
@@ -177,6 +177,7 @@ MonoBehaviour:
   animCon:
   - {fileID: 9100000, guid: 5f75c85b89bf4194e9b76cdc8b273706, type: 2}
   - {fileID: 22100000, guid: acc71bcd8aac42e42a50389d525e4302, type: 2}
+  - {fileID: 22100000, guid: d29d9d80a8ee068419d9513450d98b48, type: 2}
   - {fileID: 22100000, guid: 3c70ad564d74be44892df827f9b95a6d, type: 2}
   health: 0
   maxHealth: 0
@@ -184,7 +185,7 @@ MonoBehaviour:
   speed: 0
   attackCooldown: 0
   isBoss: 0
-  attackSound: {fileID: 8300000, guid: d322b7dd0ef3bba45b0e1c7cad5b86ee, type: 3}
+  hitSound: {fileID: 8300000, guid: d322b7dd0ef3bba45b0e1c7cad5b86ee, type: 3}
   deathSound: {fileID: 8300000, guid: 396086bccc47c0f44864213b2edeac47, type: 3}
 --- !u!95 &-6905558438665539217
 Animator:

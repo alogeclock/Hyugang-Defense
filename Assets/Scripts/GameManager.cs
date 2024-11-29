@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         monsterLevel = 1;
         isPopupped = false;
-        gold = 600;
+        gold = 450;
         playTime = 0.0f;
         score = 0;
         scoreTimer = 0.0f;
@@ -63,13 +63,13 @@ public class GameManager : MonoBehaviour
         }
         */
         
-        // 1분마다 1라운드가 진행됨, 최대 4라운드
-        round = (int)Mathf.Min(1f + (float)(playTime / 60), 5);
+        // 2분마다 1라운드가 진행됨, 최대 3라운드
+        round = (int)Mathf.Min(1f + (float)(playTime / 120), 5);
 
-        // 4라운드가 종료되면 Spawner가 멈추고, 보스 몬스터를 소환함
-        if (round >= 5 && !isBossSummoned) {
-            Spawner.instance.StopSpawning();
-            Spawner.instance.SpawnBoss(4, 3); // boss(type 4)을 line 3(가장 아랫줄)에 소환
+        // Boss Round가 종료되면 Spawner가 멈추고, 보스 몬스터를 소환함
+        int bossRound = Spawner.instance.spawnData.Length - 1;
+        if (round >= bossRound + 1 && !isBossSummoned) {
+            Spawner.instance.SpawnBoss(bossRound, 3); // boss(type 4)를 line 3(가장 아랫줄)에 소환
             isBossSummoned = true;
         }
 
@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
 
         // 점점 소환 속도가 빨라짐
         if (!isBossSummoned)
-            spawnInterval = Mathf.Max(10.0f - (float)(playTime / 15), 3.0f);
+            spawnInterval = Mathf.Max(10.0f - (float)(playTime / 60), 3.0f);
     }
 
     public void Win() {

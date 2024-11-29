@@ -19,6 +19,7 @@ public class Spawner : MonoBehaviour
     {
         instance = this;
         spawnPoint = GetComponentsInChildren<Transform>();
+
     }
 
     private void Start()
@@ -29,6 +30,7 @@ public class Spawner : MonoBehaviour
     private void FixedUpdate() 
     {
         timer += Time.deltaTime;
+        if ((GameManager.instance.playTime % 120) < 5f) timer = 0; // roundUI 출력 중 소환 정지
         if (timer < spawnInterval) return;
         
         spawnInterval = GameManager.instance.spawnInterval;
@@ -49,7 +51,7 @@ public class Spawner : MonoBehaviour
         enemy.tag = "Enemy";
         
         int line = Random.Range(1, spawnPoint.Length);
-        int level = Mathf.Min(GameManager.instance.monsterLevel, spawnData.Length);
+        int level = Mathf.Min(GameManager.instance.monsterLevel, spawnData.Length - 1);
         int monsterType = Random.Range(0, level); // 33.3%
 
         enemy.transform.position = spawnPoint[line].position;
@@ -70,7 +72,7 @@ public class SpawnData
 {
     public int spriteType;
     public float speed;
-    public int health;
+    public int[] health;
     public int damage;
     public float attackCooldown;
     public float size;

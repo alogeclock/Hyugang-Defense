@@ -81,13 +81,40 @@ public class Unit : MonoBehaviour
     {
         if (amount < 0) // 播放受击音效
         {
-            if (hitSound != null && audioSource != null)
-            {
-                audioSource.PlayOneShot(hitSound);
-            }
+            if (hitSound != null && audioSource != null) audioSource.PlayOneShot(hitSound);
+            StartCoroutine(Hit()); // 하얀색으로 깜빡임
+        }
+        health = Mathf.Clamp(health + amount, 0, maxHealth);
+    }
+
+    IEnumerator Hit() {
+        Debug.Log(gameObject + "is Attacked by Zombie (in Hit())");
+        Color spriteColor = spriter.color;
+        Color hitColor = new Color(1f, 0.8f, 0.8f, 1f);
+
+        float fadeDuration = 0.2f; // 페이드 아웃 지속 시간
+        float timer = 0f;
+
+        // 하얀색으로 전환
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+            spriter.color = Color.Lerp(spriteColor, hitColor, timer / fadeDuration);
+            Debug.Log("Original Color: " + spriter.color);
+            yield return null;
         }
 
-        health = Mathf.Clamp(health + amount, 0, maxHealth);
+        // 원래 색으로 복구
+        timer = 0f;
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+            spriter.color = Color.Lerp(hitColor, spriteColor, timer / fadeDuration);
+            Debug.Log("Original Color: " + spriter.color);
+            yield return null;
+        }
+
+        spriter.color = spriteColor;
     }
 
     public void RangeAttack()
