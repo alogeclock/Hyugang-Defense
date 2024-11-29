@@ -3,7 +3,11 @@ guid: 81d1161217736ea4c96db561de5e1ba7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - bulletPrefab: {instanceID: 0}
+  - spriter: {instanceID: 0}
+  - coll: {instanceID: 0}
+  - attackSound: {fileID: 8300000, guid: fc566ac6f3494004c9515c15035f3074, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

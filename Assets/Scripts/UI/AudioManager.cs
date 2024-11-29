@@ -31,12 +31,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        PlayBGM(Config.BGM1); // Start playing bgm1 on Start
-
+    void Start() {
+        AudioManager.instance.PlayBGM(Config.MenuBGM);
     }
 
+    // Play background music (can be used for both battle and menu)
     public void PlayBGM(string path)
     {
         // Load audio clip from the Resources folder
@@ -54,6 +53,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    // Method to play a sound effect (e.g., for button clicks or actions)
     public void PlaySoundEffect(string path)
     {
         AudioClip ac = Resources.Load<AudioClip>(path);
@@ -66,6 +66,12 @@ public class AudioManager : MonoBehaviour
         {
             Debug.LogError($"Failed to load sound effect at path: {path}");
         }
+    }
+
+    // Method to stop any playing background music
+    public void StopBGM()
+    {
+        audioSource.Stop();
     }
 }
 

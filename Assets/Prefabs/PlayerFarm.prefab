@@ -363,6 +363,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8786277596421118920, guid: 5f29905db7444bc4dbe19671bd78ecd5, type: 3}
   spriter: {fileID: 0}
   coll: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: fc566ac6f3494004c9515c15035f3074, type: 3}
+  hitSound: {fileID: 8300000, guid: 5365f45158a2d984f9b019ad0726c7b9, type: 3}
 --- !u!95 &-8471437297950524491
 Animator:
   serializedVersion: 5
