@@ -41,7 +41,7 @@ public class SettingManager : MonoBehaviour
         if (GameManager.instance != null && GameManager.instance.gameObject != null) {
             Destroy(GameManager.instance.gameObject);
         }
-        SceneManager.LoadScene("Menu");
+        SceneChanger.instance.SceneToMenu();
     }
 
     public void Enable() {
