@@ -33,6 +33,7 @@ public class SceneChanger : MonoBehaviour
     }
 
     public void SceneToPlay() {
+        ScoreManager.instance.Disable();
         SceneManager.LoadScene("Play");
         AudioManager.instance.PlayBGM(Config.BGM1);
         // **************************************************
@@ -43,6 +44,8 @@ public class SceneChanger : MonoBehaviour
 
     public void SceneToPrologue() {
         // gameObject.SetActive(false);
+        
+        ScoreManager.instance.Disable();
         AudioManager.instance.PlaySoundEffect("Audio/buttonclick");
         SceneManager.LoadScene("Prologue");
     }
@@ -51,6 +54,7 @@ public class SceneChanger : MonoBehaviour
         if (GameManager.instance != null && GameManager.instance.gameObject != null) {
             Destroy(GameManager.instance.gameObject);
         }
+        ScoreManager.instance.Disable();
         AudioManager.instance.PlaySoundEffect("Audio/buttonclick");
         SceneManager.LoadScene("Menu");
         AudioManager.instance.PlayBGM(Config.MenuBGM);
@@ -61,6 +65,7 @@ public class SceneChanger : MonoBehaviour
     }
 
     public void SceneToWin() {
+        ScoreManager.instance.Enable();
         SceneManager.LoadScene("Win");
         
         // **************************************************
@@ -70,6 +75,7 @@ public class SceneChanger : MonoBehaviour
     }
 
     public void SceneToLose() {
+        ScoreManager.instance.Enable();
         SceneManager.LoadScene("Lose");
 
         // **************************************************
@@ -80,6 +86,7 @@ public class SceneChanger : MonoBehaviour
 
     public void Exit() {
         AudioManager.instance.PlaySoundEffect("Audio/buttonclick");
+        
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else 
