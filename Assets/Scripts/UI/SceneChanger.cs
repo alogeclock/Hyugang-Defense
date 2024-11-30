@@ -65,6 +65,7 @@ public class SceneChanger : MonoBehaviour
     }
 
     public void SceneToWin() {
+        ScoreManager.instance.score = (int)1e7;
         ScoreManager.instance.Enable();
         SceneManager.LoadScene("Win");
         

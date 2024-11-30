@@ -42,6 +42,7 @@ public class ScoreManager : MonoBehaviour
         else if (score < 7500) rankUI.text = "C";
         else if (score < 10000) rankUI.text = "B";
         else if (score < 12500) rankUI.text = "A";
-        else rankUI.text = "A+";
+        else if (score < (int)1e7) rankUI.text = "A+";
+        else rankUI.text = "S";
     }
 }

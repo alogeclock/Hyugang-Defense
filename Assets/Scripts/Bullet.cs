@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Bullet : MonoBehaviour
 {
     public int bulletDamage;
     Rigidbody2D rigid;
     public bool isCollide;
-    
+
+
     void Awake() 
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -38,6 +41,7 @@ public class Bullet : MonoBehaviour
 
     void Update() 
     {
+        transform.Rotate(Vector3.back * 150f * Time.deltaTime);
         if (transform.position.magnitude > 20.0f) Destroy(gameObject);
     }
 }
