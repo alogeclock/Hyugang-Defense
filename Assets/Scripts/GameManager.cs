@@ -69,6 +69,9 @@ public class GameManager : MonoBehaviour
         // Boss Round가 종료되면 Spawner가 멈추고, 보스 몬스터를 소환함
         int bossRound = Spawner.instance.spawnData.Length - 1;
         if (round >= bossRound + 1 && !isBossSummoned) {
+            Spawner.instance.SpawnSpecific(0, 1);
+            Spawner.instance.SpawnSpecific(0, 2);
+            Spawner.instance.SpawnSpecific(0, 3);
             Spawner.instance.SpawnBoss(bossRound, 3); // boss(type 4)를 line 3(가장 아랫줄)에 소환
             isBossSummoned = true;
         }

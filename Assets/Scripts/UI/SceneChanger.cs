@@ -53,7 +53,6 @@ public class SceneChanger : MonoBehaviour
             Destroy(GameManager.instance.gameObject);
         }
         SceneManager.LoadScene("Menu");
-        
         AudioManager.instance.PlayBGM(Config.MenuBGM);
         // **************************************************
         // [재생되는 BGM을 메뉴 BGM으로 변경]

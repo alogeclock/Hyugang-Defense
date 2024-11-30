@@ -88,7 +88,7 @@ public class Unit : MonoBehaviour
     }
 
     IEnumerator Hit() {
-        Debug.Log(gameObject + "is Attacked by Zombie (in Hit())");
+        // Debug.Log(gameObject + "is Attacked by Zombie (in Hit())");
         Color spriteColor = spriter.color;
         Color hitColor = new Color(1f, 0.8f, 0.8f, 1f);
 

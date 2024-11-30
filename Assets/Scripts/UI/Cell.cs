@@ -10,6 +10,16 @@ public class Cell : MonoBehaviour
 
     private bool isInEnemy;
 
+    BoxCollider2D coll;
+
+    void Start() {
+        coll = GetComponent<BoxCollider2D>();
+    }
+
+    void Update() {
+        if (currentUnit == null) coll.enabled = true;
+    }
+
     private void OnMouseDown()
     {
         HandManager.instance.OnCellClick(this);
@@ -51,7 +61,7 @@ public class Cell : MonoBehaviour
 
         spriter.sortingOrder = line;
         if (unitColl != null) unitColl.enabled = true;
-    
+        coll.enabled = false; // 현재 콜라이더 비활성화
         // Unit.TransitionToEnable();
         return true;
     }

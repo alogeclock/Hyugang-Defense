@@ -58,6 +58,16 @@ public class Spawner : MonoBehaviour
         enemy.GetComponent<Enemy>().InitEnemy(spawnData[monsterType], line);
     }
 
+    public void SpawnSpecific(int monsterType, int line)
+    {
+        // get enemy's prefab
+        GameObject enemy = GameManager.instance.pool.Get(0);
+        enemy.tag = "Enemy";
+
+        enemy.transform.position = spawnPoint[line].position;
+        enemy.GetComponent<Enemy>().InitEnemy(spawnData[monsterType], line);
+    }
+
     public void SpawnBoss(int monsterType, int line)
     {
         GameObject enemy = GameManager.instance.pool.Get(0);

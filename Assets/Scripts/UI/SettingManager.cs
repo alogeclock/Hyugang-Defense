@@ -47,7 +47,6 @@ public class SettingManager : MonoBehaviour
     public void Enable() {
         Time.timeScale = 0;
         setting.SetActive(true);
-        
         AudioManager.instance.PlaySoundEffect("Audio/buttonclick");
         if (GameManager.instance != null) GameManager.instance.isPopupped = true;
     }

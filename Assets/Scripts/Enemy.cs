@@ -57,6 +57,7 @@ public class Enemy : MonoBehaviour
             if (unit != null || home != null) {
                 if (unit != null) unit.ChangeHealth(-damage);
                 else if (home != null) home.ChangeHealth(-damage);
+                anim.SetTrigger("Attack");
             }
             else {
                 attackTimer = 0;
@@ -102,7 +103,7 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isLive) return;
+        if (!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit")) return;
 
         // move
         Vector2 nextVec = Vector2.left.normalized * speed * Time.fixedDeltaTime;
@@ -120,6 +121,7 @@ public class Enemy : MonoBehaviour
     
     IEnumerator Hit() {
         Debug.Log(gameObject + "is Attacked by Zombie (in Hit())");
+        yield return new WaitForSeconds(0.3f);
         Color spriteColor = spriter.color;
         Color hitColor = new Color(1f, 0.8f, 0.8f, 1f);
 
@@ -172,7 +174,7 @@ public class Enemy : MonoBehaviour
         health = Mathf.Clamp(health + amount, 0, maxHealth);
         if (amount < 0) {
             
-            audioSource.PlayOneShot(hitSound); // 播放音效    
+            audioSource.PlayOneShot(hitSound); // 播放音效
             StartCoroutine(Hit()); // 붉은색으로 깜빡임
         }  
     }

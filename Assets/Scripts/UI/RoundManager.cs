@@ -13,7 +13,7 @@ public class RoundManager : MonoBehaviour
     private void Awake() 
     {
         g = FindObjectOfType<GameManager>();
-        round = 0;
+        round = -1;
 
         for (int i = 0; i < roundUI.Length; i++) {
             roundUI[i].SetActive(false);

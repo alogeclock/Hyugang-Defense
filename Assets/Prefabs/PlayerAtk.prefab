@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -8834609343163561568}
   m_Layer: 6
   m_Name: PlayerAtk
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,7 +149,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.11824489, y: 0.8317461}
+  m_Offset: {x: 0.5608628, y: 0.8317461}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -160,7 +160,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5835037, y: 1.01226}
+  m_Size: {x: 0.22528839, y: 1.01226}
   m_EdgeRadius: 0
 --- !u!114 &-8182737055057787714
 MonoBehaviour:
@@ -288,7 +288,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08288807, y: 1.2553042}
+  m_Offset: {x: -0.08288807, y: 0.9870842}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -299,7 +299,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8320657, y: 2.4879305}
+  m_Size: {x: 1.8320657, y: 1.9514903}
   m_EdgeRadius: 0
 --- !u!1 &9146494933637590292
 GameObject:
