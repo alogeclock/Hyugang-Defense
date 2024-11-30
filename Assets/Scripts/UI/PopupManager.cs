@@ -24,11 +24,11 @@ public class PopupManager : MonoBehaviour
 
     void FixedUpdate() 
     {
-        if (Input.GetMouseButtonDown(0)) 
-        {
+        if (Input.GetMouseButtonDown(0)) {
             if (EventSystem.current.IsPointerOverGameObject()) return;
         }
-        
+
+        if (currentUnit != null) UpdateData(currentUnit);
     }
 
     public void UpdateData(Unit unit)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Analytics;
 
 public class Enemy : MonoBehaviour
@@ -17,6 +18,8 @@ public class Enemy : MonoBehaviour
 
     bool isLive;
     public bool isBoss;
+    public GameObject healthBar;
+    public Image fill;
 
     Animator anim;
     SpriteRenderer spriter;
@@ -166,6 +169,9 @@ public class Enemy : MonoBehaviour
         maxHealth = data.health[round];
         attackCooldown = data.attackCooldown;
         isBoss = data.isBoss;
+        
+        if (isBoss) healthBar.SetActive(true);
+        else healthBar.SetActive(false);
     }
 
     public void ChangeHealth(float amount) 
@@ -173,9 +179,9 @@ public class Enemy : MonoBehaviour
         Debug.Log("enemy is attacked");
         health = Mathf.Clamp(health + amount, 0, maxHealth);
         if (amount < 0) {
-            
             audioSource.PlayOneShot(hitSound); // 播放音效
             StartCoroutine(Hit()); // 붉은색으로 깜빡임
-        }  
+        }
+        fill.fillAmount = health / maxHealth;
     }
 }
