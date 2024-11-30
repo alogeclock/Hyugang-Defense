@@ -34,7 +34,6 @@ public class SceneChanger : MonoBehaviour
 
     public void SceneToPlay() {
         SceneManager.LoadScene("Play");
-
         AudioManager.instance.PlayBGM(Config.BGM1);
         // **************************************************
         // [재생되는 BGM을 플레이 중 BGM으로 변경]
@@ -44,7 +43,7 @@ public class SceneChanger : MonoBehaviour
 
     public void SceneToPrologue() {
         // gameObject.SetActive(false);
-
+        AudioManager.instance.PlaySoundEffect("Audio/buttonclick");
         SceneManager.LoadScene("Prologue");
     }
     
@@ -52,6 +51,7 @@ public class SceneChanger : MonoBehaviour
         if (GameManager.instance != null && GameManager.instance.gameObject != null) {
             Destroy(GameManager.instance.gameObject);
         }
+        AudioManager.instance.PlaySoundEffect("Audio/buttonclick");
         SceneManager.LoadScene("Menu");
         AudioManager.instance.PlayBGM(Config.MenuBGM);
         // **************************************************
@@ -79,6 +79,7 @@ public class SceneChanger : MonoBehaviour
     }
 
     public void Exit() {
+        AudioManager.instance.PlaySoundEffect("Audio/buttonclick");
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else 
