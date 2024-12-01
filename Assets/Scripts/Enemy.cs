@@ -6,7 +6,7 @@ using UnityEngine.Analytics;
 
 public class Enemy : MonoBehaviour
 {
-    public RuntimeAnimatorController[] animCon; 
+    public RuntimeAnimatorController[] animCon;
 
     public float health;
     public int maxHealth;
@@ -28,9 +28,11 @@ public class Enemy : MonoBehaviour
 
     public AudioClip hitSound; // 攻击音效
     public AudioClip deathSound;  // 死亡音效
+    public AudioClip bossDeathSound; // Boss死亡音效
+    public AudioClip bossAttackSound; // Boss攻击音效
     private AudioSource audioSource;
 
-    void Awake() 
+    void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         spriter = GetComponent<SpriteRenderer>();
@@ -46,7 +48,7 @@ public class Enemy : MonoBehaviour
         health = maxHealth;
         coll.enabled = true;
         rigid.simulated = true;
-        spriter.color = new Color (1f, 1f, 1f, 1f);
+        spriter.color = new Color(1f, 1f, 1f, 1f);
     }
 
     void OnCollisionStay2D(Collision2D other)
@@ -57,12 +59,27 @@ public class Enemy : MonoBehaviour
 
         if (attackTimer <= 0)
         {
-            if (unit != null || home != null) {
-                if (unit != null) unit.ChangeHealth(-damage);
-                else if (home != null) home.ChangeHealth(-damage);
+            if (unit != null || home != null)
+            {
+                if (unit != null)
+                {
+                    unit.ChangeHealth(-damage);
+                }
+                else if (home != null)
+                {
+                    home.ChangeHealth(-damage);
+                }
+
                 anim.SetTrigger("Attack");
+
+                // 如果是Boss，则播放Boss的攻击音效
+                if (isBoss && bossAttackSound != null)
+                {
+                    audioSource.PlayOneShot(bossAttackSound);
+                }
             }
-            else {
+            else
+            {
                 attackTimer = 0;
                 return;
             }
@@ -75,18 +92,23 @@ public class Enemy : MonoBehaviour
         Debug.Log("enemy is died");
         isLive = false;
 
-        // 사망 사운드 재생
-        if (deathSound != null && audioSource != null)
+        // 对Boss播放不同的死亡音效
+        if (isBoss && bossDeathSound != null && audioSource != null)
         {
-            audioSource.PlayOneShot(deathSound);
-            yield return new WaitForSeconds(deathSound.length); // 사운드 길이만큼 대기
+            audioSource.PlayOneShot(bossDeathSound); // Boss死亡音效
+        }
+        else if (deathSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(deathSound); // 普通敌人死亡音效
         }
 
+        yield return new WaitForSeconds(deathSound.length); // 等待音效播放完
+
         Color spriteColor = spriter.color;
-        float fadeDuration = 0.5f; // 페이드 아웃 지속 시간
+        float fadeDuration = 0.5f; // fade out duration
         float timer = 0f;
 
-        // 페이드 아웃 루프
+        // Fade out effect
         while (timer < fadeDuration)
         {
             timer += Time.deltaTime;
@@ -97,63 +119,71 @@ public class Enemy : MonoBehaviour
         }
 
         GameManager.instance.score += maxHealth;
-        coll.enabled = false;       // 콜라이더 비활성화
-        rigid.simulated = false;    // Rigidbody 비활성화
+        coll.enabled = false;       // Disable collider
+        rigid.simulated = false;    // Disable rigidbody
 
-        if (isBoss) GameManager.instance.Win();
-        gameObject.SetActive(false); // 게임 오브젝트 비활성화
+        // 如果是Boss，触发Boss死亡后的一些事件
+        if (isBoss)
+        {
+            GameManager.instance.Win();
+            // 你可以在这里添加其他Boss死亡后的一些行为，例如掉落奖励、召唤其他敌人等
+            // 示例：
+            // GameManager.instance.SpawnMinions(); // 假设GameManager有SpawnMinions方法
+        }
+
+        gameObject.SetActive(false); // Deactivate the game object
     }
 
     void FixedUpdate()
     {
         if (!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit")) return;
 
-        // move
+        // Move the enemy
         Vector2 nextVec = Vector2.left.normalized * speed * Time.fixedDeltaTime;
         rigid.MovePosition(rigid.position + nextVec);
         rigid.velocity = Vector2.zero;
         anim.SetFloat("Speed", speed);
 
-        // attack
+        // Handle attack cooldown
         attackTimer = Mathf.Clamp(attackTimer - Time.deltaTime, 0, attackCooldown);
 
-        if (health > 0) {}
-        else StartCoroutine(Die());
+        if (health <= 0)
+        {
+            StartCoroutine(Die());
+        }
     }
 
-    
-    IEnumerator Hit() {
-        Debug.Log(gameObject + "is Attacked by Zombie (in Hit())");
+    IEnumerator Hit()
+    {
+        Debug.Log(gameObject + " is Attacked (in Hit())");
         yield return new WaitForSeconds(0.3f);
         Color spriteColor = spriter.color;
         Color hitColor = new Color(1f, 0.8f, 0.8f, 1f);
 
-        float fadeDuration = 0.2f; // 페이드 아웃 지속 시간
+        float fadeDuration = 0.2f; // fade duration
         float timer = 0f;
 
-        // 하얀색으로 전환
+        // Transition to hit color
         while (timer < fadeDuration)
         {
             timer += Time.deltaTime;
             spriter.color = Color.Lerp(spriteColor, hitColor, timer / fadeDuration);
-            Debug.Log("Original Color: " + spriter.color);
             yield return null;
         }
 
-        // 원래 색으로 복구
+        // Restore original color
         timer = 0f;
         while (timer < fadeDuration)
         {
             timer += Time.deltaTime;
             spriter.color = Color.Lerp(hitColor, spriteColor, timer / fadeDuration);
-            Debug.Log("Original Color: " + spriter.color);
             yield return null;
         }
 
         spriter.color = spriteColor;
     }
 
-    public void InitEnemy(SpawnData data, int line) 
+    public void InitEnemy(SpawnData data, int line)
     {
         Debug.Log("Init Enemy Size is " + data.size);
         spriter.sortingOrder = line;
@@ -169,18 +199,19 @@ public class Enemy : MonoBehaviour
         maxHealth = data.health[round];
         attackCooldown = data.attackCooldown;
         isBoss = data.isBoss;
-        
+
         if (isBoss) healthBar.SetActive(true);
         else healthBar.SetActive(false);
     }
 
-    public void ChangeHealth(float amount) 
+    public void ChangeHealth(float amount)
     {
         Debug.Log("enemy is attacked");
         health = Mathf.Clamp(health + amount, 0, maxHealth);
-        if (amount < 0) {
+        if (amount < 0)
+        {
             audioSource.PlayOneShot(hitSound); // 播放音效
-            StartCoroutine(Hit()); // 붉은색으로 깜빡임
+            StartCoroutine(Hit()); // 붉은色으로 깜빡임
         }
         fill.fillAmount = health / maxHealth;
     }

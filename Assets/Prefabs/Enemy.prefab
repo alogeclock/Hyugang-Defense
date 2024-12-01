@@ -148,10 +148,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -190,6 +190,8 @@ MonoBehaviour:
   fill: {fileID: 6048376478798547004}
   hitSound: {fileID: 8300000, guid: d322b7dd0ef3bba45b0e1c7cad5b86ee, type: 3}
   deathSound: {fileID: 8300000, guid: 396086bccc47c0f44864213b2edeac47, type: 3}
+  bossDeathSound: {fileID: 8300000, guid: fb2d9f466f6a6144db2afd80cd8bc7fa, type: 3}
+  bossAttackSound: {fileID: 8300000, guid: 98960d0a313a1d44e89e4b9e2d9ed06a, type: 3}
 --- !u!95 &-6905558438665539217
 Animator:
   serializedVersion: 5

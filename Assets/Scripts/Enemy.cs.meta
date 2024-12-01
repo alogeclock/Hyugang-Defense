@@ -3,7 +3,13 @@ guid: 9a0fc7f65aeb70c44b2187ab40177d7c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - healthBar: {instanceID: 0}
+  - fill: {instanceID: 0}
+  - attackSound: {instanceID: 0}
+  - bossAttackSound: {fileID: 8300000, guid: 98960d0a313a1d44e89e4b9e2d9ed06a, type: 3}
+  - hitSound: {fileID: 8300000, guid: 98960d0a313a1d44e89e4b9e2d9ed06a, type: 3}
+  - deathSound: {fileID: 8300000, guid: 396086bccc47c0f44864213b2edeac47, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
