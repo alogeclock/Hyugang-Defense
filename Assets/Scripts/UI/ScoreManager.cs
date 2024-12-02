@@ -8,16 +8,18 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
     public int score;
+    public Text rankDialogue;
     public Text rankUI;
 
     void Start()
     {   
-        gameObject.SetActive(false);
         if (instance == null) instance = this;
         else {
             Destroy(gameObject); 
             return;
         }
+        rankDialogue.text = "당신의 등급은··· ";
+        Disable();
         DontDestroyOnLoad(gameObject);
     }
 
@@ -29,11 +31,13 @@ public class ScoreManager : MonoBehaviour
 
     public void Enable() {
         GetRank();
-        gameObject.SetActive(true);
+        rankDialogue.gameObject.SetActive(true);
+        rankUI.gameObject.SetActive(true);
     }
 
     public void Disable() {
-        Destroy(gameObject);
+        rankDialogue.gameObject.SetActive(false);
+        rankUI.gameObject.SetActive(false);
     }
 
     void GetRank() {
