@@ -1,6 +1,7 @@
 # 고등야구 - 좀비를 막아라!
-Highschool Baseball vs. Zombies<br/>
-디지털콘텐츠캡스톤디자인 (MAEG401-01)<br/>
+Highschool Baseball vs. Zombies
+
+디지털콘텐츠캡스톤디자인 (MAEG401-01)
 
 ---
 
