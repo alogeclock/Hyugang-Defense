@@ -6,7 +6,9 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance { get; private set; }
 
-    private AudioSource audioSource;
+    public AudioSource audioSource;
+    public AudioClip winSound;
+    public AudioClip loseSound;
 
     private void Awake()
     {
@@ -57,6 +59,7 @@ public class AudioManager : MonoBehaviour
     public void PlaySoundEffect(string path)
     {
         AudioClip ac = Resources.Load<AudioClip>(path);
+        
         if (ac != null)
         {
             audioSource.PlayOneShot(ac);

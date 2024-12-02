@@ -3471,7 +3471,7 @@ MonoBehaviour:
     isBoss: 0
   - spriteType: 3
     speed: 0.5
-    health: dc050000dc050000dc050000dc050000
+    health: d0070000d0070000d0070000d0070000
     damage: 75
     attackCooldown: 1
     size: 3

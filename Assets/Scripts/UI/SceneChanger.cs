@@ -67,6 +67,8 @@ public class SceneChanger : MonoBehaviour
     public void SceneToWin() {
         ScoreManager.instance.score = (int)1e7;
         ScoreManager.instance.Enable();
+        AudioManager.instance.audioSource.Stop();
+        AudioManager.instance.PlaySoundEffect(Config.Win);
         SceneManager.LoadScene("Win");
         
         // **************************************************
@@ -77,6 +79,8 @@ public class SceneChanger : MonoBehaviour
 
     public void SceneToLose() {
         ScoreManager.instance.Enable();
+        AudioManager.instance.audioSource.Stop();
+        AudioManager.instance.PlaySoundEffect(Config.Lose);
         SceneManager.LoadScene("Lose");
 
         // **************************************************
