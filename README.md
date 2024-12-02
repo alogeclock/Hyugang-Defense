@@ -1,5 +1,5 @@
-# 고등야구 - 좀비를 막아라! (Highschool Baseball vs. Zombies)
-Plants vs Zombies style defense game created in Unity
+# 고등야구 - 좀비를 막아라!
+Highschool Baseball vs. Zombies
 디지털콘텐츠캡스톤디자인 (MAEG401-01)
 
 ---
