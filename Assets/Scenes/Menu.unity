@@ -638,10 +638,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dcc3dfa9bb1c0548b4ec0a410e590bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitSound: {fileID: 0}
-  deathSound: {fileID: 0}
-  bossDeathSound: {fileID: 0}
-  bossAttackSound: {fileID: 0}
 --- !u!114 &281034700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -654,10 +650,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dcc3dfa9bb1c0548b4ec0a410e590bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitSound: {fileID: 0}
-  deathSound: {fileID: 0}
-  bossDeathSound: {fileID: 0}
-  bossAttackSound: {fileID: 0}
 --- !u!1 &415257341
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,6 +896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+  rankDialogue: {fileID: 1639178944}
   rankUI: {fileID: 240514876}
 --- !u!114 &540768871
 MonoBehaviour:
