@@ -18,8 +18,8 @@ Highschool Baseball vs. Zombies
 
 ![play screenshot](./Images/Title.png)
 
-시작 버튼을 눌러 게임을 시작합니다.
-플레이를 통해 얻은 재화를 통해 상점에서 다양한 강화를 할 수 있습니다.
+시작 버튼을 눌러 게임을 시작합니다. <br/>
+상점 버튼을 눌러 플레이를 통해 얻은 재화로 다양한 강화를 할 수 있습니다.
 
 ![play screenshot](./Images/Play.png)
 
