@@ -32,6 +32,19 @@ public class Enemy : MonoBehaviour
     public AudioClip bossAttackSound; // Boss攻击音效
     private AudioSource audioSource;
 
+    public float referenceWidth = 1920f; // 기준 화면 높이 (픽셀)
+
+    void Start() {
+        SpeedChangeToCamera();
+    }
+
+    void SpeedChangeToCamera()
+    {
+        float currentWidth = Screen.width;
+        float speedRatio = Mathf.Min(currentWidth / referenceWidth, 1f);
+        speed *= speedRatio;
+    }
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();

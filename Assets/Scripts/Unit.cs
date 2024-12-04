@@ -125,7 +125,8 @@ public class Unit : MonoBehaviour
 
     public void RangeAttack()
     {
-        GameObject bulletObject = Instantiate(bulletPrefab, rigid.position + Vector2.up * 1.2f, Quaternion.identity);
+        Vector2 bulletHeight = rigid.position + Vector2.up * (spriter.bounds.size.y / 2);
+        GameObject bulletObject = Instantiate(bulletPrefab, bulletHeight, Quaternion.identity);
         Bullet bullet = bulletObject.GetComponent<Bullet>();
         bullet.bulletDamage = (int)damage;
         bullet.Launch(Vector2.right, 200);

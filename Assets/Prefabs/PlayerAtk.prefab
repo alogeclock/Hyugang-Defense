@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 6638929697565582143}
   - component: {fileID: -216593952259804964}
   - component: {fileID: -3858561816900372555}
-  - component: {fileID: -8182737055057787714}
   - component: {fileID: -8834609343163561568}
+  - component: {fileID: -8182737055057787714}
+  - component: {fileID: 2491246617848922452}
   m_Layer: 6
   m_Name: PlayerAtk
   m_TagString: Player
@@ -162,6 +163,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.22528839, y: 1.01226}
   m_EdgeRadius: 0
+--- !u!95 &-8834609343163561568
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2341369048286099744}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 4b21b199be708894885a7b15351acf56, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &-8182737055057787714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,27 +212,19 @@ MonoBehaviour:
   coll: {fileID: 0}
   attackSound: {fileID: 8300000, guid: 2083aee65eefee44a84ae083496cc7a3, type: 3}
   hitSound: {fileID: 8300000, guid: 5365f45158a2d984f9b019ad0726c7b9, type: 3}
---- !u!95 &-8834609343163561568
-Animator:
-  serializedVersion: 5
+--- !u!114 &2491246617848922452
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2341369048286099744}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 4b21b199be708894885a7b15351acf56, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de78f426fa42624418671768c509b237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  referenceHeight: 1080
 --- !u!1 &4528302726801347373
 GameObject:
   m_ObjectHideFlags: 0

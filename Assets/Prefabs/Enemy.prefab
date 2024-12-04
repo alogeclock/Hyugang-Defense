@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8890571143560303228}
   - component: {fileID: -6905558438665539217}
   - component: {fileID: 2848181784661109147}
+  - component: {fileID: 330721613404244436}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -151,7 +152,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -309,6 +310,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &330721613404244436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4786800974903835127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de78f426fa42624418671768c509b237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  referenceHeight: 1080
 --- !u!1 &6776977253782420395
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,7 +18,6 @@ public class Spawner : MonoBehaviour
     {
         instance = this;
         spawnPoint = GetComponentsInChildren<Transform>();
-
     }
 
     private void Start()

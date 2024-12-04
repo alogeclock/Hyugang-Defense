@@ -30,7 +30,7 @@ public class HandManager : MonoBehaviour
             return false; 
         }
 
-        currentUnit = GameObject.Instantiate(unitPrefab);
+        currentUnit = GameObject.Instantiate(unitPrefab, transform);
         
         return true;
     }

@@ -186,8 +186,9 @@ GameObject:
   - component: {fileID: 8685324565982660454}
   - component: {fileID: 7550145782698858653}
   - component: {fileID: 9177084407717171423}
-  - component: {fileID: 6295462736295770438}
   - component: {fileID: 1149697576271440671}
+  - component: {fileID: 6295462736295770438}
+  - component: {fileID: 4879860693612610806}
   m_Layer: 6
   m_Name: PlayerDef
   m_TagString: Player
@@ -336,6 +337,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.30323845, y: 0.92188454}
   m_EdgeRadius: 0
+--- !u!95 &1149697576271440671
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8459633124190610638}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 8fcfc05d9a4e35c4d83115b1cca5304d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &6295462736295770438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,24 +386,16 @@ MonoBehaviour:
   coll: {fileID: 0}
   attackSound: {fileID: 0}
   hitSound: {fileID: 8300000, guid: 5365f45158a2d984f9b019ad0726c7b9, type: 3}
---- !u!95 &1149697576271440671
-Animator:
-  serializedVersion: 5
+--- !u!114 &4879860693612610806
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8459633124190610638}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 8fcfc05d9a4e35c4d83115b1cca5304d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de78f426fa42624418671768c509b237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  referenceHeight: 1080

@@ -186,8 +186,9 @@ GameObject:
   - component: {fileID: 7620721573648843586}
   - component: {fileID: 6299820003188465754}
   - component: {fileID: 5091283595913093169}
-  - component: {fileID: 1574742381339822347}
   - component: {fileID: -8471437297950524491}
+  - component: {fileID: 1574742381339822347}
+  - component: {fileID: 681893855439233570}
   m_Layer: 6
   m_Name: PlayerFarm
   m_TagString: Player
@@ -336,6 +337,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.20420885, y: 1.000623}
   m_EdgeRadius: 0
+--- !u!95 &-8471437297950524491
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8460430002082627488}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 92186e002a09fa146b2991dd2a9841d8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1574742381339822347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,24 +386,16 @@ MonoBehaviour:
   coll: {fileID: 0}
   attackSound: {fileID: 8300000, guid: fc566ac6f3494004c9515c15035f3074, type: 3}
   hitSound: {fileID: 8300000, guid: 5365f45158a2d984f9b019ad0726c7b9, type: 3}
---- !u!95 &-8471437297950524491
-Animator:
-  serializedVersion: 5
+--- !u!114 &681893855439233570
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8460430002082627488}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 92186e002a09fa146b2991dd2a9841d8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de78f426fa42624418671768c509b237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  referenceHeight: 1080
