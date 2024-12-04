@@ -59,27 +59,16 @@ public class Enemy : MonoBehaviour
 
         if (attackTimer <= 0)
         {
-            if (unit != null || home != null)
-            {
-                if (unit != null)
-                {
-                    unit.ChangeHealth(-damage);
-                }
-                else if (home != null)
-                {
-                    home.ChangeHealth(-damage);
-                }
-
+            if (unit != null || home != null) {
                 anim.SetTrigger("Attack");
+                if (unit != null) unit.ChangeHealth(-damage);
+                else if (home != null) home.ChangeHealth(-damage);
 
                 // 如果是Boss，则播放Boss的攻击音效
                 if (isBoss && bossAttackSound != null)
-                {
                     audioSource.PlayOneShot(bossAttackSound);
-                }
             }
-            else
-            {
+            else {
                 attackTimer = 0;
                 return;
             }
@@ -94,14 +83,9 @@ public class Enemy : MonoBehaviour
 
         // 对Boss播放不同的死亡音效
         if (isBoss && bossDeathSound != null && audioSource != null)
-        {
             audioSource.PlayOneShot(bossDeathSound); // Boss死亡音效
-        }
         else if (deathSound != null && audioSource != null)
-        {
             audioSource.PlayOneShot(deathSound); // 普通敌人死亡音效
-        }
-
         yield return new WaitForSeconds(deathSound.length); // 等待音效播放完
 
         Color spriteColor = spriter.color;
@@ -200,7 +184,10 @@ public class Enemy : MonoBehaviour
         attackCooldown = data.attackCooldown;
         isBoss = data.isBoss;
 
-        if (isBoss) healthBar.SetActive(true);
+        if (isBoss) {
+            healthBar.SetActive(true);
+            rigid.mass = 5;
+        }
         else healthBar.SetActive(false);
     }
 

@@ -8,8 +8,12 @@ public class Base : MonoBehaviour
     public float maxHealth;
     public bool isFence;
 
+    public AudioClip hitSound;
+    private AudioSource audioSource;
+
     void Awake() {
         health = maxHealth;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate() {
@@ -27,6 +31,8 @@ public class Base : MonoBehaviour
 
     public void ChangeHealth(float amount)
     {
+        
+        if (amount < 0) if (hitSound != null && audioSource != null) audioSource.PlayOneShot(hitSound);
         health = Mathf.Clamp(health + amount, 0, maxHealth);
     }
 }

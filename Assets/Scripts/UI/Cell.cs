@@ -53,6 +53,15 @@ public class Cell : MonoBehaviour
         }
         
         currentUnit = unit;
+
+        // global level에 따른 수치 변경
+        int atkLevel = ScoreManager.instance.atkLevel;
+        int healthLevel = ScoreManager.instance.healthLevel;
+
+        currentUnit.maxHealth += 5 * (healthLevel - 1);
+        currentUnit.health = currentUnit.maxHealth;
+        if (currentUnit.isRanged) currentUnit.damage += (atkLevel - 1);
+
         currentUnit.transform.position = transform.position;
         GameManager.instance.gold -= currentUnit.price;
         

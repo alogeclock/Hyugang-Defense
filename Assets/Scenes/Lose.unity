@@ -446,8 +446,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 31, y: -425}
-  m_SizeDelta: {x: 250, y: 250}
+  m_AnchoredPosition: {x: 31, y: -411.3002}
+  m_SizeDelta: {x: 250, y: 122.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &371109051
 MonoBehaviour:
@@ -1446,9 +1446,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df26db48dc0db974d8a857962efd3aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalGold: 0
   score: 0
   rankDialogue: {fileID: 0}
   rankUI: {fileID: 1569541059}
+  goldUI: {fileID: 0}
+  goldGameObj: {fileID: 0}
+  atkLevel: 0
+  healthLevel: 0
+  goldLevel: 0
 --- !u!114 &1189755390
 MonoBehaviour:
   m_ObjectHideFlags: 0

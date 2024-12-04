@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     public float playTime;
     public float scoreTimer;
 
+    int earn; // earning gold from ScoreManager's gold upgrade
+    float goldTimer;
+
     public int monsterLevel;
     public float spawnInterval;
 
@@ -38,6 +41,9 @@ public class GameManager : MonoBehaviour
         playTime = 0.0f;
         score = 0;
         scoreTimer = 0.0f;
+
+        earn = ScoreManager.instance.goldLevel - 1;
+        goldTimer = 0.0f;
         spawnInterval = 10.0f;
         popup.SetActive(false);
     }
@@ -45,10 +51,16 @@ public class GameManager : MonoBehaviour
     void FixedUpdate() {
         playTime += Time.deltaTime;
         scoreTimer += Time.deltaTime;
+        goldTimer += Time.deltaTime;
         
         if (scoreTimer > 1.0f) {
             scoreTimer = 0.0f;
             score += 10;
+        }
+
+        if (goldTimer > 3.0f) {
+            goldTimer = 0.0f;
+            gold += earn;
         }
 
         playTimeUI.text = SetTime((int)playTime);
@@ -82,8 +94,7 @@ public class GameManager : MonoBehaviour
         monsterLevel = (int)Mathf.Min(round, Spawner.instance.spawnData.Length);
 
         // 점점 소환 속도가 빨라짐
-        if (!isBossSummoned)
-            spawnInterval = Mathf.Max(10.0f - (float)(playTime / 60), 3.0f);
+        spawnInterval = Mathf.Max(11.0f - (float)(playTime / 45) - round, 4.0f);
     }
 
     public void Win() {

@@ -14,6 +14,7 @@ public class Unit : MonoBehaviour
     public float damage;
     public float Cooldown;
     float Timer;
+    float hpTimer;
 
     public bool isRanged; // range attack
     public bool isFarm;
@@ -33,6 +34,7 @@ public class Unit : MonoBehaviour
     {
         health = maxHealth;
         Timer = Cooldown;
+        hpTimer = 4f;
         level = 1;
         isInCell = false;
 
@@ -53,6 +55,7 @@ public class Unit : MonoBehaviour
     {
         // attack
         Timer = Mathf.Clamp(Timer - Time.deltaTime, 0, Cooldown);
+        hpTimer = Mathf.Clamp(hpTimer - Time.deltaTime, 0, 4f);
 
         if (Timer <= 0)
         {
@@ -60,9 +63,12 @@ public class Unit : MonoBehaviour
             if (isFarm) Farm();
             Timer = Cooldown;
         }
-
-        // dead
-        if (health <= 0) Destroy(gameObject);
+        
+        if (hpTimer <= 0) {
+            ChangeHealth(Mathf.Floor(maxHealth * 0.01f));
+            hpTimer = 2f;
+        }
+        if (health <= 0) Destroy(gameObject); // dead
     }
 
     void OnCollisionStay2D(Collision2D other)
