@@ -199,6 +199,7 @@ public class Enemy : MonoBehaviour
 
         if (isBoss) {
             healthBar.SetActive(true);
+            spriter.sortingOrder = line + 1;
             rigid.mass = 5;
         }
         else healthBar.SetActive(false);
