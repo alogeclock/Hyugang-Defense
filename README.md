@@ -7,7 +7,7 @@ Highschool Baseball vs. Zombies
 
 |테스트 환경|세부사항|
 |:---|:---|
-| CPU| AMD Ryezn 5 5600X|
+| CPU| AMD Ryzen 5 5600X|
 | GPU| Radeon RX 6600XT|
 | Platform| Unity|
 | OS| Windows 10|
