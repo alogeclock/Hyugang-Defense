@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
         monsterLevel = (int)Mathf.Min(round, Spawner.instance.spawnData.Length);
 
         // 점점 소환 속도가 빨라짐
-        spawnInterval = Mathf.Max(11.0f - (float)(playTime / 45) - round, 4.0f);
+        spawnInterval = Mathf.Max(12.0f - (float)(playTime / 45) - round, 4.0f);
     }
 
     public void Win() {
