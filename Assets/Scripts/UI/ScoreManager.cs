@@ -68,22 +68,25 @@ public class ScoreManager : MonoBehaviour
 
     public void upgradeAtk() {
         AudioManager.instance.PlaySoundEffect("Audio/buttonclick");
-        if (globalGold < atkLevel * 100) return;
-        globalGold -= atkLevel * 100;
+        int price = (atkLevel - 1) * 50 + 100;
+        if (globalGold < price) return;
+        globalGold -= price;
         atkLevel++;
     }
     
     public void upgradeHealth() {
         AudioManager.instance.PlaySoundEffect("Audio/buttonclick");
-        if (globalGold < healthLevel * 100) return;
-        globalGold -= healthLevel * 100;
+        int price = (healthLevel - 1) * 50 + 100;
+        if (globalGold < price) return;
+        globalGold -= price;
         healthLevel++;
     }
 
     public void upgradeGold() {
         AudioManager.instance.PlaySoundEffect("Audio/buttonclick");
-        if (globalGold < goldLevel * 100) return;
-        globalGold -= goldLevel * 100;
+        int price = (goldLevel - 1) * 50 + 100;
+        if (globalGold < price) return;
+        globalGold -= price;
         goldLevel++;
     }
 }

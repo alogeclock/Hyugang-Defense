@@ -29,9 +29,9 @@ public class ShopUI : MonoBehaviour
         LevelUI[1].text = "LV." + healthLevel.ToString();
         LevelUI[2].text = "LV." + goldLevel.ToString();
 
-        costUI[0].text = (100 * atkLevel).ToString();
-        costUI[1].text = (100 * healthLevel).ToString();
-        costUI[2].text = (100 * goldLevel).ToString();
+        costUI[0].text = (50 * (atkLevel - 1) + 100).ToString();
+        costUI[1].text = (50 * (healthLevel - 1) + 100).ToString();
+        costUI[2].text = (50 * (goldLevel - 1) + 100).ToString();
 
         goldUI.text = ScoreManager.instance.globalGold.ToString();
     }
